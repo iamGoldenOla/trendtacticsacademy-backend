@@ -1,11 +1,11 @@
-# Trendtactics Academy LMS Backend
+# Trendtactics Academy LMS Backend - Supabase Edition
 
-A comprehensive Learning Management System (LMS) backend built with Node.js, Express, TypeScript, and MongoDB. This API powers the Trendtactics Academy platform with robust features for course management, user authentication, progress tracking, and more.
+A comprehensive Learning Management System (LMS) backend built with Node.js, Express, TypeScript, and Supabase. This API powers the Trendtactics Academy platform with robust features for course management, user authentication, progress tracking, and more.
 
 ## 🚀 Features
 
 ### Core Functionality
-- **User Authentication & Authorization** - JWT-based auth with role management
+- **User Authentication & Authorization** - Supabase Auth with role management
 - **Course Management** - Create, update, and organize courses with lessons
 - **Progress Tracking** - Monitor student learning progress and completion
 - **Badge System** - Gamification with achievement badges
@@ -23,7 +23,7 @@ A comprehensive Learning Management System (LMS) backend built with Node.js, Exp
 ## 📋 Prerequisites
 
 - Node.js (v16 or higher)
-- MongoDB (v5 or higher)
+- Supabase Account
 - npm or yarn package manager
 
 ## 🛠️ Installation
@@ -48,13 +48,19 @@ A comprehensive Learning Management System (LMS) backend built with Node.js, Exp
    ```env
    NODE_ENV=development
    PORT=5000
-   MONGO_URI=mongodb://localhost:27017/lms
+   SUPABASE_URL=your_supabase_project_url
+   SUPABASE_ANON_KEY=your_supabase_anon_key
+   SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
    JWT_SECRET=your-super-secret-jwt-key
    JWT_EXPIRE=30d
    FRONTEND_URL=http://localhost:3000
    ```
 
-4. **Start the development server**
+4. **Database Setup**
+   
+   Follow the instructions in [SUPABASE_INTEGRATION.md](SUPABASE_INTEGRATION.md) to set up your Supabase database tables and relationships.
+
+5. **Start the development server**
    ```bash
    npm run dev
    ```
@@ -77,6 +83,18 @@ npm run test:watch
 
 # Generate coverage report
 npm run test:coverage
+
+# Test Supabase connection
+npm run test-supabase
+
+# Test Supabase connection with credentials
+npm run test-supabase-credentials
+
+# Check environment variables
+npm run check-env
+
+# Test environment variables
+npm run test-env-vars
 ```
 
 ## 🔧 Development Scripts
@@ -126,7 +144,7 @@ src/
 ├── middleware/         # Express middleware
 │   ├── auth.ts         # Authentication middleware
 │   └── errorHandler.ts # Error handling
-├── models/             # MongoDB models
+├── models/             # Supabase models (replaces MongoDB models)
 │   ├── User.ts
 │   ├── Course.ts
 │   └── ...
@@ -134,10 +152,15 @@ src/
 │   ├── authRoutes.ts
 │   ├── courseRoutes.ts
 │   └── ...
+├── scripts/            # Database scripts and utilities
+│   ├── *.sql           # SQL scripts for database setup
+│   └── *.ts            # TypeScript utilities
+├── services/           # Business logic
+│   └── aiService.ts    # AI tutor service
 ├── types/              # TypeScript type definitions
 │   └── index.ts
 ├── utils/              # Utility functions
-│   ├── db.ts           # Database connection
+│   ├── supabase.ts     # Supabase client configuration
 │   └── logger.ts       # Logging utility
 └── index.ts            # Application entry point
 ```
@@ -175,8 +198,8 @@ src/
 - **Helmet** - Security headers
 - **Rate Limiting** - Prevent abuse
 - **CORS** - Cross-origin resource sharing
-- **JWT Authentication** - Secure token-based auth
-- **Input Validation** - Mongoose schema validation
+- **Supabase Auth** - Secure token-based auth
+- **Input Validation** - Supabase schema validation
 - **Error Sanitization** - Prevent information leakage
 
 ## 📊 Logging
@@ -199,84 +222,36 @@ Log files are stored in the `logs/` directory.
 2. **Set production environment variables**
    ```env
    NODE_ENV=production
-   MONGO_URI=your-production-mongodb-uri
-   JWT_SECRET=your-production-jwt-secret
-   FRONTEND_URL=your-production-frontend-url
+   PORT=5000
+   SUPABASE_URL=your_production_supabase_url
+   SUPABASE_ANON_KEY=your_production_supabase_anon_key
+   SUPABASE_SERVICE_ROLE_KEY=your_production_supabase_service_role_key
+   JWT_SECRET=your_production_jwt_secret
+   JWT_EXPIRE=30d
+   FRONTEND_URL=https://yourdomain.com
    ```
 
-3. **Start the production server**
-   ```bash
-   npm start
-   ```
+3. **Deploy to your preferred platform**
+   - Vercel
+   - Heroku
+   - AWS
+   - DigitalOcean
+   - Other cloud platforms
 
-## 📈 Future Enhancements
+## 📚 Documentation
 
-- **Calendar Integration** - Schedule assignments and deadlines
-- **Bento Layout To-Do List** - Modern task organization
-- **Real-time Notifications** - WebSocket integration
-- **Advanced Analytics** - Learning progress insights
-- **Mobile API** - React Native support
+- [Supabase Integration Guide](SUPABASE_INTEGRATION.md)
+- [Final Integration Summary](FINAL_INTEGRATION_SUMMARY.md)
+- [Security Notice](SECURITY_NOTICE.md)
 
-## API Documentation
+## 🤝 Contributing
 
-### Authentication Endpoints
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a pull request
 
-- `POST /api/auth/register` - Register a new user
-- `POST /api/auth/login` - Login a user
-- `GET /api/auth/profile` - Get user profile (protected)
-- `PUT /api/auth/profile` - Update user profile (protected)
+## 📞 Contact
 
-### Course Endpoints
-
-- `GET /api/courses` - Get all courses
-- `GET /api/courses/:id` - Get a single course
-- `POST /api/courses` - Create a new course (instructor/admin)
-- `PUT /api/courses/:id` - Update a course (instructor/admin)
-- `DELETE /api/courses/:id` - Delete a course (instructor/admin)
-- `POST /api/courses/:id/enroll` - Enroll in a course (student)
-- `GET /api/courses/instructor/courses` - Get instructor courses (instructor)
-- `GET /api/courses/student/enrolled` - Get enrolled courses (student)
-
-### Lesson Endpoints
-
-- `GET /api/courses/:courseId/lessons/:lessonId` - Get a lesson
-- `POST /api/courses/:courseId/lessons` - Add a lesson (instructor/admin)
-- `PUT /api/courses/:courseId/lessons/:lessonId` - Update a lesson (instructor/admin)
-- `DELETE /api/courses/:courseId/lessons/:lessonId` - Delete a lesson (instructor/admin)
-- `POST /api/courses/:courseId/lessons/:lessonId/complete` - Mark lesson as complete (student)
-
-### Quiz Endpoints
-
-- `GET /api/courses/:courseId/lessons/:lessonId/quiz` - Get lesson quiz
-- `POST /api/courses/:courseId/lessons/:lessonId/quiz` - Add quiz to lesson (instructor/admin)
-- `PUT /api/courses/:courseId/lessons/:lessonId/quiz` - Update lesson quiz (instructor/admin)
-- `POST /api/courses/:courseId/lessons/:lessonId/quiz/submit` - Submit quiz answers (student)
-- `GET /api/courses/:courseId/module-quiz` - Get module quiz
-- `PUT /api/courses/:courseId/module-quiz` - Update module quiz (instructor/admin)
-- `POST /api/courses/:courseId/module-quiz/submit` - Submit module quiz answers (student)
-
-### Progress Endpoints
-
-- `GET /api/progress` - Get all user progress
-- `GET /api/progress/:courseId` - Get user progress for a course
-- `PUT /api/progress/:courseId/access` - Update last accessed time
-- `DELETE /api/progress/:courseId` - Reset progress for a course
-- `GET /api/progress/stats/:courseId` - Get course completion stats (instructor/admin)
-
-### Badge Endpoints
-
-- `GET /api/badges` - Get all badges
-- `POST /api/badges` - Create a badge (admin)
-- `PUT /api/badges/:id` - Update a badge (admin)
-- `DELETE /api/badges/:id` - Delete a badge (admin)
-- `POST /api/badges/:id/award/:userId` - Award badge to user (admin)
-- `GET /api/badges/user/:userId` - Get user badges
-
-### Upload Endpoints
-
-- `POST /api/upload/avatar` - Upload user avatar (protected)
-- `POST /api/upload/thumbnail/:courseId` - Upload course thumbnail (instructor/admin)
-
-## License
-
-This project is licensed under the MIT License.
+For any questions or issues, please contact the development team.
