@@ -1,0 +1,170 @@
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m❌ Error connecting to MongoDB: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/\u001b[39m","timestamp":"2025-07-23 23:58:23:5823"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m❌ MongoDB connection error: AC230000:error:0A000438:SSL routines:ssl3_read_bytes:tlsv1 alert internal error:c:\\ws\\deps\\openssl\\openssl\\ssl\\record\\rec_layer_s3.c:1605:SSL alert number 80\u001b[39m\n\u001b[31m\u001b[39m","timestamp":"2025-07-23 23:58:23:5823"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET / 404 - 2ms\u001b[39m","timestamp":"2025-07-23 23:59:16:5916"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET /favicon.ico 404 - 2ms\u001b[39m","timestamp":"2025-07-23 23:59:16:5916"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET / 404 - 1ms\u001b[39m","timestamp":"2025-07-24 00:02:52:252"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m❌ Error connecting to MongoDB: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/\u001b[39m","timestamp":"2025-07-24 10:55:29:5529"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m❌ MongoDB connection error: 88080000:error:0A000438:SSL routines:ssl3_read_bytes:tlsv1 alert internal error:c:\\ws\\deps\\openssl\\openssl\\ssl\\record\\rec_layer_s3.c:1605:SSL alert number 80\u001b[39m\n\u001b[31m\u001b[39m","timestamp":"2025-07-24 10:55:29:5529"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m❌ Error connecting to MongoDB: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/\u001b[39m","timestamp":"2025-07-24 10:57:35:5735"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m❌ MongoDB connection error: 1C410000:error:0A000438:SSL routines:ssl3_read_bytes:tlsv1 alert internal error:c:\\ws\\deps\\openssl\\openssl\\ssl\\record\\rec_layer_s3.c:1605:SSL alert number 80\u001b[39m\n\u001b[31m\u001b[39m","timestamp":"2025-07-24 10:57:35:5735"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m❌ Error connecting to MongoDB: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/\u001b[39m","timestamp":"2025-07-24 11:00:20:020"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m❌ MongoDB connection error: 2C0D0000:error:0A000438:SSL routines:ssl3_read_bytes:tlsv1 alert internal error:c:\\ws\\deps\\openssl\\openssl\\ssl\\record\\rec_layer_s3.c:1605:SSL alert number 80\u001b[39m\n\u001b[31m\u001b[39m","timestamp":"2025-07-24 11:00:20:020"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m❌ Error connecting to MongoDB: querySrv ETIMEOUT _mongodb._tcp.trendtactics-lms-cluste.x4jfrqv.mongodb.net\u001b[39m","timestamp":"2025-07-24 11:02:08:28"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m❌ MongoDB connection error: querySrv ETIMEOUT _mongodb._tcp.trendtactics-lms-cluste.x4jfrqv.mongodb.net\u001b[39m","timestamp":"2025-07-24 11:02:08:28"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m❌ Error connecting to MongoDB: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/\u001b[39m","timestamp":"2025-07-24 11:04:42:442"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m❌ MongoDB connection error: 984B0000:error:0A000438:SSL routines:ssl3_read_bytes:tlsv1 alert internal error:c:\\ws\\deps\\openssl\\openssl\\ssl\\record\\rec_layer_s3.c:1605:SSL alert number 80\u001b[39m\n\u001b[31m\u001b[39m","timestamp":"2025-07-24 11:04:42:442"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m❌ Error connecting to MongoDB: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/\u001b[39m","timestamp":"2025-07-24 11:12:06:126"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m❌ MongoDB connection error: 44370000:error:0A000438:SSL routines:ssl3_read_bytes:tlsv1 alert internal error:c:\\ws\\deps\\openssl\\openssl\\ssl\\record\\rec_layer_s3.c:1605:SSL alert number 80\u001b[39m\n\u001b[31m\u001b[39m","timestamp":"2025-07-24 11:12:06:126"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET / 404 - 7ms\u001b[39m","timestamp":"2025-07-24 11:13:49:1349"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET /favicon.ico 404 - 1ms\u001b[39m","timestamp":"2025-07-24 11:13:49:1349"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m❌ Error connecting to MongoDB: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/\u001b[39m","timestamp":"2025-07-24 11:26:33:2633"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m❌ MongoDB connection error: B8490000:error:0A000438:SSL routines:ssl3_read_bytes:tlsv1 alert internal error:c:\\ws\\deps\\openssl\\openssl\\ssl\\record\\rec_layer_s3.c:1605:SSL alert number 80\u001b[39m\n\u001b[31m\u001b[39m","timestamp":"2025-07-24 11:26:33:2633"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m❌ Error connecting to MongoDB: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/\u001b[39m","timestamp":"2025-07-24 11:34:06:346"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m❌ MongoDB connection error: 6C1B0000:error:0A000438:SSL routines:ssl3_read_bytes:tlsv1 alert internal error:c:\\ws\\deps\\openssl\\openssl\\ssl\\record\\rec_layer_s3.c:1605:SSL alert number 80\u001b[39m\n\u001b[31m\u001b[39m","timestamp":"2025-07-24 11:34:06:346"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m❌ Error connecting to MongoDB: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/\u001b[39m","timestamp":"2025-07-24 11:36:15:3615"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m❌ MongoDB connection error: 08460000:error:0A000438:SSL routines:ssl3_read_bytes:tlsv1 alert internal error:c:\\ws\\deps\\openssl\\openssl\\ssl\\record\\rec_layer_s3.c:1605:SSL alert number 80\u001b[39m\n\u001b[31m\u001b[39m","timestamp":"2025-07-24 11:36:15:3615"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m❌ Error connecting to MongoDB: Password not allowed for mechanism MONGODB-X509\u001b[39m","timestamp":"2025-07-24 11:37:12:3712"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m❌ MongoDB connection error: Password not allowed for mechanism MONGODB-X509\u001b[39m","timestamp":"2025-07-24 11:37:12:3712"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m❌ Error connecting to MongoDB: SRV URI does not support directConnection\u001b[39m","timestamp":"2025-07-24 11:38:18:3818"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m❌ MongoDB connection error: SRV URI does not support directConnection\u001b[39m","timestamp":"2025-07-24 11:38:18:3818"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m❌ Error connecting to MongoDB: SRV URI does not support directConnection\u001b[39m","timestamp":"2025-07-24 11:39:02:392"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m❌ MongoDB connection error: SRV URI does not support directConnection\u001b[39m","timestamp":"2025-07-24 11:39:02:392"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m❌ Error connecting to MongoDB: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/\u001b[39m","timestamp":"2025-07-24 11:40:32:4032"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m❌ MongoDB connection error: F4450000:error:0A000438:SSL routines:ssl3_read_bytes:tlsv1 alert internal error:c:\\ws\\deps\\openssl\\openssl\\ssl\\record\\rec_layer_s3.c:1605:SSL alert number 80\u001b[39m\n\u001b[31m\u001b[39m","timestamp":"2025-07-24 11:40:32:4032"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m❌ Error connecting to MongoDB: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/\u001b[39m","timestamp":"2025-07-24 11:41:59:4159"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m❌ MongoDB connection error: AC4C0000:error:0A000438:SSL routines:ssl3_read_bytes:tlsv1 alert internal error:c:\\ws\\deps\\openssl\\openssl\\ssl\\record\\rec_layer_s3.c:1605:SSL alert number 80\u001b[39m\n\u001b[31m\u001b[39m","timestamp":"2025-07-24 11:41:59:4159"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m❌ Error connecting to MongoDB: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/\u001b[39m","timestamp":"2025-07-24 11:49:28:4928"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m❌ MongoDB connection error: 3C330000:error:0A000438:SSL routines:ssl3_read_bytes:tlsv1 alert internal error:c:\\ws\\deps\\openssl\\openssl\\ssl\\record\\rec_layer_s3.c:1605:SSL alert number 80\u001b[39m\n\u001b[31m\u001b[39m","timestamp":"2025-07-24 11:49:28:4928"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m❌ Error connecting to MongoDB: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/\u001b[39m","timestamp":"2025-07-24 11:51:44:5144"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m❌ MongoDB connection error: D42E0000:error:0A000438:SSL routines:ssl3_read_bytes:tlsv1 alert internal error:c:\\ws\\deps\\openssl\\openssl\\ssl\\record\\rec_layer_s3.c:1605:SSL alert number 80\u001b[39m\n\u001b[31m\u001b[39m","timestamp":"2025-07-24 11:51:44:5144"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET /ws 404 - 1ms\u001b[39m","timestamp":"2025-07-24 11:58:46:5846"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET /ws 404 - 1ms\u001b[39m","timestamp":"2025-07-24 11:58:53:5853"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m❌ Error connecting to MongoDB: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/\u001b[39m","timestamp":"2025-07-24 12:01:39:139"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m❌ MongoDB connection error: 9C110000:error:0A000438:SSL routines:ssl3_read_bytes:tlsv1 alert internal error:c:\\ws\\deps\\openssl\\openssl\\ssl\\record\\rec_layer_s3.c:1605:SSL alert number 80\u001b[39m\n\u001b[31m\u001b[39m","timestamp":"2025-07-24 12:01:39:139"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m❌ Error connecting to MongoDB: bad auth : authentication failed\u001b[39m","timestamp":"2025-07-24 13:04:17:417"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m❌ MongoDB connection error: bad auth : authentication failed\u001b[39m","timestamp":"2025-07-24 13:04:17:417"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m❌ Error connecting to MongoDB: bad auth : authentication failed\u001b[39m","timestamp":"2025-07-24 13:04:44:444"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m❌ MongoDB connection error: bad auth : authentication failed\u001b[39m","timestamp":"2025-07-24 13:04:44:444"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET /favicon.ico 404 - 2ms\u001b[39m","timestamp":"2025-07-24 13:12:00:120"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET /api/ai/health 401 - 2ms\u001b[39m","timestamp":"2025-07-24 13:14:05:145"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET /api/auth/login 404 - 11ms\u001b[39m","timestamp":"2025-07-24 18:56:05:565"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET /favicon.ico 404 - 2ms\u001b[39m","timestamp":"2025-07-24 18:56:05:565"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET /api/auth/login 404 - 11ms\u001b[39m","timestamp":"2025-07-24 19:00:37:037"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET /api/auth/login 404 - 3ms\u001b[39m","timestamp":"2025-07-24 19:00:43:043"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET /.well-known/appspecific/com.chrome.devtools.json 404 - 1ms\u001b[39m","timestamp":"2025-07-24 19:01:03:13"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET /api/auth/login 404 - 0ms\u001b[39m","timestamp":"2025-07-24 19:03:12:312"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET /api/auth/login 404 - 4ms\u001b[39m","timestamp":"2025-07-24 19:03:13:313"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET /api/auth/login 404 - 2ms\u001b[39m","timestamp":"2025-07-24 19:03:13:313"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/login 401 - 156ms\u001b[39m","timestamp":"2025-07-24 19:03:26:326"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/login 401 - 151ms\u001b[39m","timestamp":"2025-07-24 19:03:51:351"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/login 401 - 156ms\u001b[39m","timestamp":"2025-07-24 19:13:18:1318"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/logout 404 - 1ms\u001b[39m","timestamp":"2025-07-24 19:29:52:2952"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/login 401 - 154ms\u001b[39m","timestamp":"2025-07-24 19:29:57:2957"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/logout 404 - 1ms\u001b[39m","timestamp":"2025-07-24 21:43:14:4314"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/logout 404 - 1ms\u001b[39m","timestamp":"2025-07-24 21:45:43:4543"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/logout 404 - 2ms\u001b[39m","timestamp":"2025-07-24 21:45:52:4552"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/logout 404 - 1ms\u001b[39m","timestamp":"2025-07-24 21:49:10:4910"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/logout 404 - 1ms\u001b[39m","timestamp":"2025-07-24 21:52:47:5247"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/logout 404 - 2ms\u001b[39m","timestamp":"2025-07-24 22:33:30:3330"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/logout 404 - 1ms\u001b[39m","timestamp":"2025-07-24 23:12:32:1232"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET /api/auth/users 404 - 4ms\u001b[39m","timestamp":"2025-07-24 23:43:29:4329"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET /api/auth/users 404 - 3ms\u001b[39m","timestamp":"2025-07-24 23:48:07:487"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET /api/auth/users 404 - 3ms\u001b[39m","timestamp":"2025-07-24 23:48:45:4845"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET /api/auth/users 404 - 1ms\u001b[39m","timestamp":"2025-07-24 23:48:51:4851"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET /api/auth/login 404 - 2ms\u001b[39m","timestamp":"2025-07-24 23:48:58:4858"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET /api/auth/users 404 - 1ms\u001b[39m","timestamp":"2025-07-24 23:50:15:5015"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET /api/auth/login 404 - 7ms\u001b[39m","timestamp":"2025-07-25 00:23:36:2336"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET /api/auth/login 404 - 3ms\u001b[39m","timestamp":"2025-07-25 00:23:38:2338"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET /api/auth/login 404 - 1ms\u001b[39m","timestamp":"2025-07-25 00:23:38:2338"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET /api/auth/users 404 - 2ms\u001b[39m","timestamp":"2025-07-25 00:24:07:247"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET /api/auth/users 404 - 2ms\u001b[39m","timestamp":"2025-07-25 00:24:11:2411"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET /api/auth/users 404 - 1ms\u001b[39m","timestamp":"2025-07-25 00:27:19:2719"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/logout 404 - 1ms\u001b[39m","timestamp":"2025-07-25 00:54:56:5456"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET /api/auth/users 404 - 1ms\u001b[39m","timestamp":"2025-07-25 01:03:54:354"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET /api/auth/users 404 - 1ms\u001b[39m","timestamp":"2025-07-25 01:09:08:98"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET /api/auth/users 404 - 0ms\u001b[39m","timestamp":"2025-07-25 01:09:45:945"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET /api/auth/users 404 - 0ms\u001b[39m","timestamp":"2025-07-25 01:09:48:948"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET /api/auth/users 404 - 2ms\u001b[39m","timestamp":"2025-07-25 01:09:54:954"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/logout 404 - 1ms\u001b[39m","timestamp":"2025-07-25 01:26:46:2646"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/logout 404 - 1ms\u001b[39m","timestamp":"2025-07-25 01:33:01:331"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/login 401 - 157ms\u001b[39m","timestamp":"2025-07-25 01:34:32:3432"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/login 401 - 163ms\u001b[39m","timestamp":"2025-07-25 01:36:21:3621"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/login 401 - 168ms\u001b[39m","timestamp":"2025-07-25 01:36:22:3622"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET / 404 - 10ms\u001b[39m","timestamp":"2025-07-25 02:20:19:2019"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET / 404 - 2ms\u001b[39m","timestamp":"2025-07-25 02:21:04:214"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/login 401 - 178ms\u001b[39m","timestamp":"2025-07-25 07:58:00:580"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/login 401 - 142ms\u001b[39m","timestamp":"2025-07-25 07:58:04:584"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/login 401 - 142ms\u001b[39m","timestamp":"2025-07-25 07:58:08:588"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET /api/auth/users 401 - 16ms\u001b[39m","timestamp":"2025-07-25 07:59:19:5919"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET /api/dashboard 404 - 3ms\u001b[39m","timestamp":"2025-07-25 08:36:53:3653"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/register 400 - 140ms\u001b[39m","timestamp":"2025-07-25 09:49:47:4947"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/register 400 - 194ms\u001b[39m","timestamp":"2025-07-25 09:54:45:5445"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/login 401 - 317ms\u001b[39m","timestamp":"2025-07-25 10:00:51:051"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/login 401 - 168ms\u001b[39m","timestamp":"2025-07-25 10:58:50:5850"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET /admin-login 404 - 1ms\u001b[39m","timestamp":"2025-07-25 10:59:14:5914"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET /favicon.ico 404 - 1ms\u001b[39m","timestamp":"2025-07-25 10:59:14:5914"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET /admin-login 404 - 1ms\u001b[39m","timestamp":"2025-07-25 10:59:21:5921"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET /favicon.ico 404 - 1ms\u001b[39m","timestamp":"2025-07-25 10:59:21:5921"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET /api/auth/login 404 - 2ms\u001b[39m","timestamp":"2025-07-25 11:02:56:256"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET /api/auth/login 404 - 1ms\u001b[39m","timestamp":"2025-07-25 11:04:47:447"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET /api/auth/login 404 - 1ms\u001b[39m","timestamp":"2025-07-25 11:04:59:459"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET /ap 404 - 1ms\u001b[39m","timestamp":"2025-07-25 11:05:34:534"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/login 401 - 149ms\u001b[39m","timestamp":"2025-07-25 11:07:37:737"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/login 401 - 146ms\u001b[39m","timestamp":"2025-07-25 11:07:45:745"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/login 401 - 152ms\u001b[39m","timestamp":"2025-07-25 11:08:19:819"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/login 401 - 157ms\u001b[39m","timestamp":"2025-07-25 11:22:31:2231"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/login 401 - 144ms\u001b[39m","timestamp":"2025-07-25 11:22:41:2241"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/login 401 - 163ms\u001b[39m","timestamp":"2025-07-25 11:22:45:2245"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/login 401 - 160ms\u001b[39m","timestamp":"2025-07-25 11:24:33:2433"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/login 401 - 159ms\u001b[39m","timestamp":"2025-07-25 11:34:59:3459"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/login 401 - 166ms\u001b[39m","timestamp":"2025-07-25 11:35:04:354"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/login 401 - 175ms\u001b[39m","timestamp":"2025-07-25 11:35:16:3516"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/login 401 - 254ms\u001b[39m","timestamp":"2025-07-25 11:35:44:3544"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/login 401 - 213ms\u001b[39m","timestamp":"2025-07-25 11:40:52:4052"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/login 401 - 162ms\u001b[39m","timestamp":"2025-07-25 11:41:10:4110"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/logout 404 - 1ms\u001b[39m","timestamp":"2025-07-25 11:44:44:4444"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/login 401 - 307ms\u001b[39m","timestamp":"2025-07-25 11:45:06:456"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/login 401 - 272ms\u001b[39m","timestamp":"2025-07-25 11:45:32:4532"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/login 401 - 262ms\u001b[39m","timestamp":"2025-07-25 11:49:55:4955"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/login 401 - 153ms\u001b[39m","timestamp":"2025-07-25 11:56:52:5652"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/logout 404 - 1ms\u001b[39m","timestamp":"2025-07-25 11:59:07:597"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/login 401 - 149ms\u001b[39m","timestamp":"2025-07-25 11:59:40:5940"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/logout 404 - 1ms\u001b[39m","timestamp":"2025-07-25 13:36:54:3654"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET /api/auth/users 404 - 1ms\u001b[39m","timestamp":"2025-07-25 13:37:21:3721"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET /api/auth/users 404 - 1ms\u001b[39m","timestamp":"2025-07-25 13:37:25:3725"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET /api/auth/users 404 - 0ms\u001b[39m","timestamp":"2025-07-25 13:40:39:4039"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET /api/auth/users 404 - 1ms\u001b[39m","timestamp":"2025-07-25 13:43:46:4346"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/logout 404 - 3ms\u001b[39m","timestamp":"2025-07-25 14:24:18:2418"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/login 401 - 149ms\u001b[39m","timestamp":"2025-07-25 14:24:48:2448"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/logout 404 - 1ms\u001b[39m","timestamp":"2025-07-25 14:28:45:2845"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/logout 404 - 1ms\u001b[39m","timestamp":"2025-07-25 14:33:20:3320"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/logout 404 - 1ms\u001b[39m","timestamp":"2025-07-25 14:39:00:390"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/logout 404 - 0ms\u001b[39m","timestamp":"2025-07-25 14:45:08:458"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/login 401 - 149ms\u001b[39m","timestamp":"2025-07-25 14:45:41:4541"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/login 401 - 145ms\u001b[39m","timestamp":"2025-07-25 14:46:22:4622"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/login 401 - 166ms\u001b[39m","timestamp":"2025-07-25 14:47:00:470"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/logout 404 - 0ms\u001b[39m","timestamp":"2025-07-25 14:52:31:5231"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/logout 404 - 1ms\u001b[39m","timestamp":"2025-07-25 14:56:52:5652"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/logout 404 - 1ms\u001b[39m","timestamp":"2025-07-25 15:24:46:2446"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/logout 404 - 1ms\u001b[39m","timestamp":"2025-07-25 15:26:53:2653"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/logout 404 - 1ms\u001b[39m","timestamp":"2025-07-25 17:19:17:1917"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/logout 404 - 4ms\u001b[39m","timestamp":"2025-07-26 03:26:34:2634"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m❌ Error connecting to MongoDB: queryTxt ESERVFAIL trendtactics-lms-cluste.x4jfrqv.mongodb.net\u001b[39m","timestamp":"2025-07-28 19:33:51:3351"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m❌ MongoDB connection error: queryTxt ESERVFAIL trendtactics-lms-cluste.x4jfrqv.mongodb.net\u001b[39m","timestamp":"2025-07-28 19:33:51:3351"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET /api/auth/login 404 - 14ms\u001b[39m","timestamp":"2025-07-28 20:03:14:314"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET /favicon.ico 404 - 2ms\u001b[39m","timestamp":"2025-07-28 20:03:14:314"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET /api/auth/login 404 - 1ms\u001b[39m","timestamp":"2025-07-28 20:04:24:424"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET /api/auth/login 404 - 2ms\u001b[39m","timestamp":"2025-07-28 20:06:57:657"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/login 401 - 790ms\u001b[39m","timestamp":"2025-07-28 20:07:05:75"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/logout 404 - 1ms\u001b[39m","timestamp":"2025-07-28 21:23:40:2340"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET /api/auth/profile 401 - 30022ms\u001b[39m","timestamp":"2025-07-29 04:41:22:4122"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/login 500 - 30012ms\u001b[39m","timestamp":"2025-07-29 04:41:31:4131"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mGET /api/auth/profile 401 - 30011ms\u001b[39m","timestamp":"2025-07-29 04:41:42:4142"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/logout 404 - 0ms\u001b[39m","timestamp":"2025-07-29 05:39:11:3911"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/logout 404 - 4ms\u001b[39m","timestamp":"2025-07-29 22:02:01:21"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/logout 404 - 1ms\u001b[39m","timestamp":"2025-07-29 22:17:03:173"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/login 500 - 10033ms\u001b[39m","timestamp":"2025-07-31 20:42:25:4225"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m❌ Error connecting to MongoDB: queryTxt ETIMEOUT trendtactics-lms-cluster.x4jfrqv.mongodb.net\u001b[39m","timestamp":"2025-07-31 20:42:27:4227"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31m❌ MongoDB connection error: queryTxt ETIMEOUT trendtactics-lms-cluster.x4jfrqv.mongodb.net\u001b[39m","timestamp":"2025-07-31 20:42:27:4227"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/login 500 - 10042ms\u001b[39m","timestamp":"2025-07-31 20:50:10:5010"}
+{"level":"\u001b[31merror\u001b[39m","message":"\u001b[31mPOST /api/auth/login 500 - 10057ms\u001b[39m","timestamp":"2025-07-31 20:53:46:5346"}
