@@ -42,7 +42,6 @@ const dotenv_1 = __importDefault(require("dotenv"));
 const path_1 = __importDefault(require("path"));
 const helmet_1 = __importDefault(require("helmet"));
 const express_rate_limit_1 = __importDefault(require("express-rate-limit"));
-const db_1 = __importDefault(require("./utils/db"));
 const logger_1 = __importStar(require("./utils/logger"));
 const swagger_1 = require("./config/swagger");
 // Import routes
@@ -57,17 +56,6 @@ const notificationRoutes_1 = __importDefault(require("./routes/notificationRoute
 dotenv_1.default.config();
 // Initialize Express app
 const app = (0, express_1.default)();
-// Connect to MongoDB (completely isolated and non-blocking)
-setTimeout(() => {
-    (0, db_1.default)()
-        .then(() => {
-        logger_1.default.info('MongoDB connection attempt completed');
-    })
-        .catch((error) => {
-        logger_1.default.warn('MongoDB connection failed, server will continue without database');
-        logger_1.default.error(error.message);
-    });
-}, 2000); // Delay connection attempt to ensure server starts first
 // Setup Swagger documentation
 (0, swagger_1.setupSwagger)(app);
 // Security middleware
@@ -221,17 +209,7 @@ process.on('SIGINT', () => {
 // Handle unhandled promise rejections
 process.on('unhandledRejection', (err) => {
     logger_1.default.error(`Unhandled Promise Rejection: ${err.message}`, err);
-    // Don't exit for MongoDB connection errors or Atlas cluster errors
-    if (err.message.includes('MongoDB') ||
-        err.message.includes('connect') ||
-        err.message.includes('Atlas') ||
-        err.message.includes('cluster') ||
-        err.message.includes('whitelist') ||
-        err.message.includes('IP')) {
-        logger_1.default.warn('Database connection error detected, server will continue running');
-        return;
-    }
-    // Only exit for critical non-database errors
+    // Only exit for critical errors
     if (process.env.NODE_ENV === 'production') {
         server.close(() => {
             process.exit(1);

@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { Progress, Course } from '../utils/supabaseModels';
+import { LessonProgress as Progress, Course } from '../utils/supabaseModels';
 
 /**
  * @desc    Get user progress for a specific course
@@ -12,7 +12,7 @@ export const getUserCourseProgress = async (req: Request, res: Response) => {
     const userId = (req as any).user.id;
     
     // Find progress record
-    const progress = await Progress.findByUserAndCourse(userId, courseId);
+    const progress = await (Progress as any).findByUserAndCourse(userId, courseId);
     
     if (!progress) {
       return res.status(404).json({ message: 'Progress not found' });
@@ -35,7 +35,7 @@ export const getAllUserProgress = async (req: Request, res: Response) => {
     const userId = (req as any).user.id;
     
     // Find all progress records for user
-    const progress = await Progress.findByUser(userId);
+    const progress = await (Progress as any).findByUser(userId);
     
     res.json(progress);
   } catch (error: any) {
@@ -55,7 +55,7 @@ export const updateLastAccessed = async (req: Request, res: Response) => {
     const userId = (req as any).user.id;
     
     // Find progress record
-    let progress = await Progress.findByUserAndCourse(userId, courseId);
+    let progress = await (Progress as any).findByUserAndCourse(userId, courseId);
     
     // If no progress record exists, create one
     if (!progress) {
@@ -65,7 +65,7 @@ export const updateLastAccessed = async (req: Request, res: Response) => {
         return res.status(404).json({ message: 'Course not found' });
       }
       
-      progress = await Progress.upsert({
+      progress = await (Progress as any).upsert({
         user_id: userId,
         course_id: courseId,
         completed_lessons: [],
@@ -74,7 +74,7 @@ export const updateLastAccessed = async (req: Request, res: Response) => {
       });
     } else {
       // Update last accessed time
-      progress = await Progress.update(progress.id, {
+      progress = await (Progress as any).update(progress.id, {
         last_accessed: new Date().toISOString()
       });
     }
@@ -97,14 +97,14 @@ export const resetProgress = async (req: Request, res: Response) => {
     const userId = (req as any).user.id;
     
     // Find progress record
-    const progress = await Progress.findByUserAndCourse(userId, courseId);
+    const progress = await (Progress as any).findByUserAndCourse(userId, courseId);
     
     if (!progress) {
       return res.status(404).json({ message: 'Progress not found' });
     }
     
     // Update progress record to reset values
-    const updatedProgress = await Progress.update(progress.id, {
+    const updatedProgress = await (Progress as any).update(progress.id, {
       completed_lessons: [],
       progress_percentage: 0,
       last_accessed: new Date().toISOString()

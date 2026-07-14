@@ -1,7 +1,9 @@
 import { Request, Response } from 'express';
+import axios from 'axios';
 import Course from '../models/Course';
 import User from '../models/User';
 import Progress from '../models/Progress';
+import Purchase from '../models/Purchase';
 
 /**
  * @desc    Get all courses
@@ -190,7 +192,122 @@ export const enrollCourse = async (req: Request, res: Response) => {
     if (alreadyEnrolled) {
       return res.status(400).json({ message: 'Already enrolled in this course' });
     }
-    
+
+    const CURRENCY_RATES: Record<string, number> = {
+      'USD': 1.00,
+      'NGN': 1500,
+      'EUR': 0.92,
+      'GBP': 0.79,
+      'CAD': 1.35,
+      'AUD': 1.52
+    };
+
+    // Secure Payment Verification for paid courses
+    if (course.price > 0) {
+      const { reference, paymentGateway } = req.body;
+
+      if (!reference || !paymentGateway) {
+        return res.status(400).json({ message: 'Payment reference and gateway are required for paid courses' });
+      }
+
+      if (paymentGateway !== 'paystack' && paymentGateway !== 'flutterwave') {
+        return res.status(400).json({ message: 'Invalid payment gateway' });
+      }
+
+      // 1. Idempotency Check
+      const existingPurchase = await Purchase.findOne({ reference });
+      if (existingPurchase) {
+        return res.status(400).json({ message: 'This transaction reference has already been used' });
+      }
+
+      let isVerified = false;
+      let transactionAmount = 0;
+      let transactionCurrency = 'USD';
+
+      try {
+        if (paymentGateway === 'paystack') {
+          const secretKey = process.env.PAYSTACK_SECRET_KEY;
+          if (!secretKey) {
+            console.error('PAYSTACK_SECRET_KEY is not defined in environment variables');
+            return res.status(500).json({ message: 'Payment verification config error' });
+          }
+
+          const response = await axios.get(`https://api.paystack.co/transaction/verify/${reference}`, {
+            headers: {
+              Authorization: `Bearer ${secretKey}`,
+              'Content-Type': 'application/json'
+            }
+          });
+
+          const responseData = response.data as any;
+          if (responseData && responseData.status && responseData.data && responseData.data.status === 'success') {
+            isVerified = true;
+            transactionAmount = responseData.data.amount / 100; // Paystack is in kobo
+            transactionCurrency = responseData.data.currency || 'USD';
+          } else {
+            console.warn(`Paystack verification failed for ref ${reference}:`, response.data);
+          }
+        } else if (paymentGateway === 'flutterwave') {
+          const secretKey = process.env.FLUTTERWAVE_SECRET_KEY;
+          if (!secretKey) {
+            console.error('FLUTTERWAVE_SECRET_KEY is not defined in environment variables');
+            return res.status(500).json({ message: 'Payment verification config error' });
+          }
+
+          const response = await axios.get(`https://api.flutterwave.com/v3/transactions/${reference}/verify`, {
+            headers: {
+              Authorization: `Bearer ${secretKey}`,
+              'Content-Type': 'application/json'
+            }
+          });
+
+          const responseData = response.data as any;
+          if (responseData && responseData.status === 'success' && responseData.data && responseData.data.status === 'successful') {
+            isVerified = true;
+            transactionAmount = responseData.data.amount; // Flutterwave is in standard unit
+            transactionCurrency = responseData.data.currency || 'USD';
+          } else {
+            console.warn(`Flutterwave verification failed for ref ${reference}:`, response.data);
+          }
+        }
+      } catch (err: any) {
+        console.error(`Error calling ${paymentGateway} API for ref ${reference}:`, err.message || err);
+        return res.status(400).json({ message: 'Failed to contact payment provider for verification' });
+      }
+
+      if (!isVerified) {
+        console.warn(`Failed payment verification attempt by user ${req.user?._id} for course ${course._id} with ref ${reference} on gateway ${paymentGateway}`);
+        return res.status(400).json({ message: 'Payment could not be verified' });
+      }
+
+      // Check if currency rate exists
+      const rate = CURRENCY_RATES[transactionCurrency];
+      if (!rate) {
+        return res.status(400).json({ message: `Unsupported transaction currency: ${transactionCurrency}` });
+      }
+
+      // Calculate expected amount
+      const expectedAmount = Math.round(course.price * rate);
+      // Give a tiny tolerance (1.0) due to floating point roundings
+      const diff = Math.abs(transactionAmount - expectedAmount);
+
+      if (diff > 1.0) {
+        console.warn(`Amount mismatch for user ${req.user?._id}: expected ${expectedAmount} ${transactionCurrency}, got ${transactionAmount} ${transactionCurrency}`);
+        return res.status(400).json({ message: 'Paid amount does not match the course price' });
+      }
+
+      // Create purchase record
+      await Purchase.create({
+        user: req.user?._id,
+        courseId: course.id,
+        paymentGateway,
+        reference,
+        amount: transactionAmount,
+        currency: transactionCurrency,
+        status: 'success'
+      });
+    }
+
     // Add user to enrolled students
     if (req.user) {
       course.enrolledStudents.push(req.user._id);

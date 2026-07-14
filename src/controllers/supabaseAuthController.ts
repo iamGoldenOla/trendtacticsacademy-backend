@@ -36,7 +36,7 @@ export const registerUser = async (req: Request, res: Response) => {
         password, // Note: In production, you might not want to store this
         role: role || 'student',
         dashboard_preferences: {}
-      });
+      } as any);
     }
 
     res.status(201).json({

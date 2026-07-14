@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { Course, Enrollment, Progress } from '../utils/supabaseModels';
+import { Course, Enrollment, LessonProgress as Progress } from '../utils/supabaseModels';
 
 /**
  * @desc    Get all courses
@@ -84,7 +84,7 @@ export const createCourse = async (req: Request, res: Response) => {
       category,
       topics: topics || [],
       rating: 0
-    });
+    } as any);
     
     res.status(201).json(course);
   } catch (error: any) {
@@ -171,20 +171,20 @@ export const enrollCourse = async (req: Request, res: Response) => {
     const userId = (req as any).user.id;
     
     // Check if user is already enrolled
-    const isEnrolled = await Enrollment.isEnrolled(userId, req.params.id);
+    const isEnrolled = await (Enrollment as any).isEnrolled(userId, req.params.id);
     
     if (isEnrolled) {
       return res.status(400).json({ message: 'Already enrolled in this course' });
     }
     
     // Enroll user in course
-    await Enrollment.enroll({
+    await (Enrollment as any).enroll({
       user_id: userId,
       course_id: req.params.id
     });
     
     // Create progress record
-    await Progress.upsert({
+    await (Progress as any).upsert({
       user_id: userId,
       course_id: req.params.id,
       completed_lessons: [],
@@ -208,7 +208,7 @@ export const getInstructorCourses = async (req: Request, res: Response) => {
   try {
     const userId = (req as any).user.id;
     
-    const courses = await Course.findByInstructor(userId);
+    const courses = await (Course as any).findByInstructor(userId);
     
     res.json(courses);
   } catch (error: any) {

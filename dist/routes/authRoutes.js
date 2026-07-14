@@ -4,15 +4,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const authController_1 = require("../controllers/authController");
-const auth_1 = require("../middleware/auth");
+const supabaseAuthController_1 = require("../controllers/supabaseAuthController");
+const supabaseAuth_1 = require("../middleware/supabaseAuth");
 const router = express_1.default.Router();
 // Public routes
-router.post('/register', authController_1.registerUser);
-router.post('/login', authController_1.loginUser);
+router.post('/register', supabaseAuthController_1.registerUser);
+router.post('/login', supabaseAuthController_1.loginUser);
 // Protected routes
-router.get('/profile', auth_1.protect, authController_1.getUserProfile);
-router.put('/profile', auth_1.protect, authController_1.updateUserProfile);
+router.get('/profile', supabaseAuth_1.protect, supabaseAuthController_1.getUserProfile);
+router.put('/profile', supabaseAuth_1.protect, supabaseAuthController_1.updateUserProfile);
+router.post('/logout', supabaseAuth_1.protect, supabaseAuthController_1.logoutUser);
 // Admin routes
-router.get('/users', auth_1.protect, (0, auth_1.authorize)('admin'), authController_1.getAllUsers);
+router.get('/users', supabaseAuth_1.protect, supabaseAuth_1.admin, supabaseAuthController_1.getAllUsers);
 exports.default = router;

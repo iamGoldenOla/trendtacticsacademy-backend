@@ -4,14 +4,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const progressController_1 = require("../controllers/progressController");
-const auth_1 = require("../middleware/auth");
+const supabaseProgressController_1 = require("../controllers/supabaseProgressController");
+const supabaseAuth_1 = require("../middleware/supabaseAuth");
 const router = express_1.default.Router();
 // Protected routes
-router.get('/', auth_1.protect, progressController_1.getAllUserProgress);
-router.get('/:courseId', auth_1.protect, progressController_1.getUserCourseProgress);
-router.put('/:courseId/access', auth_1.protect, progressController_1.updateLastAccessed);
-router.delete('/:courseId', auth_1.protect, progressController_1.resetProgress);
+router.get('/', supabaseAuth_1.protect, supabaseProgressController_1.getAllUserProgress);
+router.get('/:courseId', supabaseAuth_1.protect, supabaseProgressController_1.getUserCourseProgress);
+router.put('/:courseId/access', supabaseAuth_1.protect, supabaseProgressController_1.updateLastAccessed);
+router.delete('/:courseId', supabaseAuth_1.protect, supabaseProgressController_1.resetProgress);
 // Instructor routes
-router.get('/stats/:courseId', auth_1.protect, (0, auth_1.authorize)('instructor', 'admin'), progressController_1.getCourseCompletionStats);
+router.get('/stats/:courseId', supabaseAuth_1.protect, supabaseAuth_1.instructor, supabaseProgressController_1.getCourseCompletionStats);
 exports.default = router;
