@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { LessonProgress as Progress, Course } from '../utils/supabaseModels';
+import { UserCourseProgress as Progress, Course } from '../utils/supabaseModels';
 
 /**
  * @desc    Get user progress for a specific course

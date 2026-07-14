@@ -561,3 +561,50 @@ export const Quiz = {
     return data;
   }
 };
+
+// User Course Progress operations
+export const UserCourseProgress = {
+  findByUserAndCourse: async (userId: string, courseId: string) => {
+    const { data, error } = await supabaseAdmin
+      .from('user_course_progress')
+      .select('*')
+      .eq('user_id', userId)
+      .eq('course_id', courseId)
+      .maybeSingle();
+    if (error) throw new Error(error.message);
+    return data;
+  },
+
+  upsert: async (progressData: any) => {
+    const { data, error } = await supabaseAdmin
+      .from('user_course_progress')
+      .upsert(progressData, { onConflict: 'user_id, course_id' })
+      .select()
+      .single();
+    if (error) throw new Error(error.message);
+    return data;
+  },
+
+  update: async (id: string, progressData: any) => {
+    const { data, error } = await supabaseAdmin
+      .from('user_course_progress')
+      .update(progressData)
+      .eq('id', id)
+      .select()
+      .single();
+    if (error) throw new Error(error.message);
+    return data;
+  },
+
+  findByUser: async (userId: string) => {
+    const { data, error } = await supabaseAdmin
+      .from('user_course_progress')
+      .select(`
+        *,
+        course:courses (id, title, thumbnail)
+      `)
+      .eq('user_id', userId);
+    if (error) throw new Error(error.message);
+    return data;
+  }
+};
