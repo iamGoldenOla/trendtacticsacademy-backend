@@ -254,13 +254,11 @@ export const enrollCourse = async (req: Request, res: Response) => {
       'prompt-engineering': 10.00
     };
 
-    const courseSlug = course.slug || (
-      course.id === 'e9e58e4a-2f3b-4c9a-8a3d-1e5f6a7b8c9d' ? 'vibe-coding' :
-      course.id === '0987fcde-4321-0987-6543-210987654321' ? 'facebook-ads' :
-      course.id === '123e4567-e89b-12d3-a456-426614174001' ? 'prompt-engineering' : ''
-    );
+    const courseSlug = course.slug || '';
 
-    const expectedPriceUSD = EXPECTED_PRICES[courseSlug] || Number(course.price) || 0;
+    const expectedPriceUSD = (course.price !== undefined && course.price !== null && Number(course.price) > 0)
+      ? Number(course.price)
+      : (EXPECTED_PRICES[courseSlug] || 0);
 
     // Secure Payment Verification for paid courses
     if (expectedPriceUSD > 0) {
