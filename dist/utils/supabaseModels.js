@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Quiz = exports.Enrollment = exports.Certificate = exports.UserBadge = exports.Badge = exports.LessonProgress = exports.Lesson = exports.Module = exports.Course = exports.User = void 0;
+exports.UserCourseProgress = exports.Quiz = exports.Enrollment = exports.Certificate = exports.UserBadge = exports.Badge = exports.LessonProgress = exports.Lesson = exports.Module = exports.Course = exports.User = void 0;
 const supabase_1 = require("./supabase");
 // User operations
 exports.User = {
@@ -509,6 +509,53 @@ exports.Quiz = {
             .select(`
         *,
         lesson:lessons (id, title)
+      `)
+            .eq('user_id', userId);
+        if (error)
+            throw new Error(error.message);
+        return data;
+    }
+};
+// User Course Progress operations
+exports.UserCourseProgress = {
+    findByUserAndCourse: async (userId, courseId) => {
+        const { data, error } = await supabase_1.supabaseAdmin
+            .from('user_course_progress')
+            .select('*')
+            .eq('user_id', userId)
+            .eq('course_id', courseId)
+            .maybeSingle();
+        if (error)
+            throw new Error(error.message);
+        return data;
+    },
+    upsert: async (progressData) => {
+        const { data, error } = await supabase_1.supabaseAdmin
+            .from('user_course_progress')
+            .upsert(progressData, { onConflict: 'user_id, course_id' })
+            .select()
+            .single();
+        if (error)
+            throw new Error(error.message);
+        return data;
+    },
+    update: async (id, progressData) => {
+        const { data, error } = await supabase_1.supabaseAdmin
+            .from('user_course_progress')
+            .update(progressData)
+            .eq('id', id)
+            .select()
+            .single();
+        if (error)
+            throw new Error(error.message);
+        return data;
+    },
+    findByUser: async (userId) => {
+        const { data, error } = await supabase_1.supabaseAdmin
+            .from('user_course_progress')
+            .select(`
+        *,
+        course:courses (id, title, thumbnail)
       `)
             .eq('user_id', userId);
         if (error)

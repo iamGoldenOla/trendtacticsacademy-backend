@@ -12,7 +12,7 @@ const getUserCourseProgress = async (req, res) => {
         const { courseId } = req.params;
         const userId = req.user.id;
         // Find progress record
-        const progress = await supabaseModels_1.LessonProgress.findByUserAndCourse(userId, courseId);
+        const progress = await supabaseModels_1.UserCourseProgress.findByUserAndCourse(userId, courseId);
         if (!progress) {
             return res.status(404).json({ message: 'Progress not found' });
         }
@@ -33,7 +33,7 @@ const getAllUserProgress = async (req, res) => {
     try {
         const userId = req.user.id;
         // Find all progress records for user
-        const progress = await supabaseModels_1.LessonProgress.findByUser(userId);
+        const progress = await supabaseModels_1.UserCourseProgress.findByUser(userId);
         res.json(progress);
     }
     catch (error) {
@@ -52,7 +52,7 @@ const updateLastAccessed = async (req, res) => {
         const { courseId } = req.params;
         const userId = req.user.id;
         // Find progress record
-        let progress = await supabaseModels_1.LessonProgress.findByUserAndCourse(userId, courseId);
+        let progress = await supabaseModels_1.UserCourseProgress.findByUserAndCourse(userId, courseId);
         // If no progress record exists, create one
         if (!progress) {
             // Verify course exists
@@ -60,7 +60,7 @@ const updateLastAccessed = async (req, res) => {
             if (!courseExists) {
                 return res.status(404).json({ message: 'Course not found' });
             }
-            progress = await supabaseModels_1.LessonProgress.upsert({
+            progress = await supabaseModels_1.UserCourseProgress.upsert({
                 user_id: userId,
                 course_id: courseId,
                 completed_lessons: [],
@@ -70,7 +70,7 @@ const updateLastAccessed = async (req, res) => {
         }
         else {
             // Update last accessed time
-            progress = await supabaseModels_1.LessonProgress.update(progress.id, {
+            progress = await supabaseModels_1.UserCourseProgress.update(progress.id, {
                 last_accessed: new Date().toISOString()
             });
         }
@@ -92,12 +92,12 @@ const resetProgress = async (req, res) => {
         const { courseId } = req.params;
         const userId = req.user.id;
         // Find progress record
-        const progress = await supabaseModels_1.LessonProgress.findByUserAndCourse(userId, courseId);
+        const progress = await supabaseModels_1.UserCourseProgress.findByUserAndCourse(userId, courseId);
         if (!progress) {
             return res.status(404).json({ message: 'Progress not found' });
         }
         // Update progress record to reset values
-        const updatedProgress = await supabaseModels_1.LessonProgress.update(progress.id, {
+        const updatedProgress = await supabaseModels_1.UserCourseProgress.update(progress.id, {
             completed_lessons: [],
             progress_percentage: 0,
             last_accessed: new Date().toISOString()
