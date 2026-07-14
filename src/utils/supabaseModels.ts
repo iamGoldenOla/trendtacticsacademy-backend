@@ -79,7 +79,8 @@ export const User = {
 export const Course = {
   // Find course by ID
   findById: async (id: string) => {
-    const { data, error } = await supabaseAdmin
+    const isUUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(id);
+    const query = supabaseAdmin
       .from('courses')
       .select(`
         *,
@@ -88,16 +89,15 @@ export const Course = {
           title,
           description,
           order_index,
-          is_published,
           lessons (
             id,
             title,
             description
           )
         )
-      `)
-      .eq('id', id)
-      .single();
+      `);
+    
+    const { data, error } = await (isUUID ? query.eq('id', id) : query.eq('slug', id)).maybeSingle();
     
     if (error) throw new Error(error.message);
     return data;
