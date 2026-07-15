@@ -1,4 +1,4 @@
-import { createClient } from '@supabase/supabase-js';
+import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
 // Get environment variables
 const supabaseUrl = process.env.SUPABASE_URL || '';
@@ -9,6 +9,9 @@ const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY || '';
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 // Create Supabase client for backend/service role usage
-export const supabaseAdmin = createClient(supabaseUrl, supabaseServiceRoleKey);
+// Falls back to anon client if service role key is not configured
+export const supabaseAdmin: SupabaseClient = supabaseServiceRoleKey && !supabaseServiceRoleKey.startsWith('your_')
+  ? createClient(supabaseUrl, supabaseServiceRoleKey)
+  : supabase;
 
-export default supabase;
+export default supabase;
