@@ -229,7 +229,6 @@ export const markLessonComplete = async (req: Request, res: Response) => {
       .from('enrollments')
       .update({
         completed_lessons: completedLessons,
-        progress: progressPercentage,
         last_accessed: new Date().toISOString()
       })
       .eq('id', enrollment.id);
