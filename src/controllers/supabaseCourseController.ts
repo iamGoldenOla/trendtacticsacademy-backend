@@ -369,14 +369,12 @@ export const enrollCourse = async (req: Request, res: Response) => {
       const { error: paymentInsertError } = await supabaseAdmin
         .from('payments')
         .insert({
-          transaction_ref: reference,
           user_id: userId,
           course_id: course.id,
-          amount: transactionAmount,
-          currency: transactionCurrency,
-          status: 'completed',
-          payment_method: paymentGateway,
-          customer_email: userEmail || '',
+          amount: Math.round(transactionAmount),
+          status: 'success',
+          reference: reference,
+          gateway: paymentGateway,
           customer_name: userName || '',
           raw_data: rawData
         });
