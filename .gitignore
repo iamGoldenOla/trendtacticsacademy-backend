@@ -45,3 +45,5 @@ debug-*.js
 find-*.js
 print-*.js
 test-insert.js
+
+.vercel
