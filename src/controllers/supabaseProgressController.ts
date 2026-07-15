@@ -247,4 +247,52 @@ export const markLessonComplete = async (req: Request, res: Response) => {
     console.error('Mark lesson complete error:', error);
     res.status(500).json({ message: 'Server error marking lesson as complete' });
   }
+};
+
+/**
+ * @desc    Update the active lesson (last viewed) for an enrollment
+ * @route   POST /api/courses/:courseId/lessons/:lessonId/active
+ * @access  Private
+ */
+export const updateActiveLesson = async (req: Request, res: Response) => {
+  try {
+    const { courseId, lessonId } = req.params;
+    const userId = (req as any).user.id;
+
+    // 1. Fetch enrollment
+    const { data: enrollment, error: enrollError } = await supabaseAdmin
+      .from('enrollments')
+      .select('id')
+      .eq('user_id', userId)
+      .eq('course_id', courseId)
+      .maybeSingle();
+
+    if (enrollError) {
+      console.error('Error checking enrollment:', enrollError);
+      return res.status(500).json({ message: 'Server error checking enrollment' });
+    }
+
+    if (!enrollment) {
+      return res.status(404).json({ message: 'Not enrolled in this course' });
+    }
+
+    // 2. Update current_lesson_id and last_accessed
+    const { error: updateError } = await supabaseAdmin
+      .from('enrollments')
+      .update({
+        current_lesson_id: lessonId,
+        last_accessed: new Date().toISOString()
+      })
+      .eq('id', enrollment.id);
+
+    if (updateError) {
+      console.error('Error updating current lesson:', updateError);
+      return res.status(500).json({ message: 'Failed to update current lesson' });
+    }
+
+    res.json({ success: true, currentLessonId: lessonId });
+  } catch (error: any) {
+    console.error('Update active lesson error:', error);
+    res.status(500).json({ message: 'Server error updating active lesson' });
+  }
 };

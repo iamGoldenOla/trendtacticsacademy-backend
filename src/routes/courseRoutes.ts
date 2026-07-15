@@ -17,7 +17,8 @@ import {
   deleteLesson
 } from '../controllers/lessonController';
 import {
-  markLessonComplete
+  markLessonComplete,
+  updateActiveLesson
 } from '../controllers/supabaseProgressController';
 import {
   getLessonQuiz,
@@ -55,6 +56,7 @@ router.post('/:courseId/lessons', protect, instructor, addLesson);
 router.put('/:courseId/lessons/:lessonId', protect, instructor, updateLesson);
 router.delete('/:courseId/lessons/:lessonId', protect, instructor, deleteLesson);
 router.post('/:courseId/lessons/:lessonId/complete', protect, markLessonComplete);
+router.post('/:courseId/lessons/:lessonId/active', protect, updateActiveLesson);
 
 // Quiz routes
 router.get('/:courseId/lessons/:lessonId/quiz', protect, getLessonQuiz);
