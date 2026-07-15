@@ -23,6 +23,9 @@ dotenv.config();
 // Initialize Express app
 const app = express();
 
+// Trust proxy for Vercel / reverse proxies to resolve express-rate-limit validation errors
+app.set('trust proxy', 1);
+
 // Setup Swagger documentation
 setupSwagger(app);
 

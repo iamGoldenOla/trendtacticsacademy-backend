@@ -153,8 +153,7 @@ export const Course = {
           id,
           title,
           description,
-          order_index,
-          is_published
+          order_index
         )
       `)
       .range((page - 1) * limit, page * limit - 1);
