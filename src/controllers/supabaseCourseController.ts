@@ -276,7 +276,7 @@ export const enrollCourse = async (req: Request, res: Response) => {
       const { data: existingPayment, error: paymentCheckError } = await supabaseAdmin
         .from('payments')
         .select('*')
-        .eq('transaction_ref', reference)
+        .eq('reference', reference)
         .maybeSingle();
 
       if (paymentCheckError) {
