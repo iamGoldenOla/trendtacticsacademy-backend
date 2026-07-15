@@ -81,10 +81,28 @@ const limiter = (0, express_rate_limit_1.default)({
 });
 app.use('/api/', limiter);
 // CORS configuration
+const allowedOrigins = [
+    'http://localhost:3000',
+    'http://localhost:3001',
+    'http://localhost:8080',
+    'http://localhost:5173',
+    'https://academy.trendtacticsdigital.com',
+    'https://trendtacticsdigital.com'
+];
 app.use((0, cors_1.default)({
-    origin: process.env.NODE_ENV === 'production'
-        ? process.env.FRONTEND_URL
-        : ['http://localhost:3000', 'http://localhost:3001'],
+    origin: (origin, callback) => {
+        if (!origin)
+            return callback(null, true);
+        if (allowedOrigins.includes(origin) ||
+            origin.endsWith('.trendtacticsdigital.com') ||
+            process.env.FRONTEND_URL === origin ||
+            process.env.NODE_ENV !== 'production') {
+            callback(null, true);
+        }
+        else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
     credentials: true,
 }));
 // Body parsing middleware
@@ -178,50 +196,45 @@ app.use((err, req, res, next) => {
         ...(process.env.NODE_ENV !== 'production' && { stack: err.stack })
     });
 });
-const PORT = Number(process.env.PORT) || 5001; // Ensure PORT is a number
-const SECONDARY_PORT = PORT === 5000 ? 5001 : 5000;
-const server = app.listen(PORT, () => {
-    logger_1.default.info(`🚀 Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
-    logger_1.default.info(`📚 API Documentation available at http://localhost:${PORT}/api-docs`);
-    logger_1.default.info(`🏥 Health check available at http://localhost:${PORT}/api/health`);
-});
-// Listen on the secondary port as well
-const secondaryServer = app.listen(SECONDARY_PORT, () => {
-    logger_1.default.info(`🚀 Server also running on secondary port ${SECONDARY_PORT}`);
-    logger_1.default.info(`📚 API Documentation available at http://localhost:${SECONDARY_PORT}/api-docs`);
-    logger_1.default.info(`🏥 Health check available at http://localhost:${SECONDARY_PORT}/api/health`);
-});
-// Graceful shutdown
-process.on('SIGTERM', () => {
-    logger_1.default.info('SIGTERM received. Shutting down gracefully...');
-    server.close(() => {
-        logger_1.default.info('Process terminated');
-        process.exit(0);
+// Only start the server when NOT running on Vercel (Vercel handles HTTP via serverless functions)
+if (!process.env.VERCEL) {
+    const PORT = Number(process.env.PORT) || 5001;
+    const server = app.listen(PORT, () => {
+        logger_1.default.info(`🚀 Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
+        logger_1.default.info(`📚 API Documentation available at http://localhost:${PORT}/api-docs`);
+        logger_1.default.info(`🏥 Health check available at http://localhost:${PORT}/api/health`);
     });
-});
-process.on('SIGINT', () => {
-    logger_1.default.info('SIGINT received. Shutting down gracefully...');
-    server.close(() => {
-        logger_1.default.info('Process terminated');
-        process.exit(0);
-    });
-});
-// Handle unhandled promise rejections
-process.on('unhandledRejection', (err) => {
-    logger_1.default.error(`Unhandled Promise Rejection: ${err.message}`, err);
-    // Only exit for critical errors
-    if (process.env.NODE_ENV === 'production') {
+    // Graceful shutdown
+    process.on('SIGTERM', () => {
+        logger_1.default.info('SIGTERM received. Shutting down gracefully...');
         server.close(() => {
-            process.exit(1);
+            logger_1.default.info('Process terminated');
+            process.exit(0);
         });
-    }
-    else {
-        logger_1.default.warn('Development mode: Server continuing despite unhandled rejection');
-    }
-});
-// Handle uncaught exceptions
-process.on('uncaughtException', (err) => {
-    logger_1.default.error(`Uncaught Exception: ${err.message}`, err);
-    process.exit(1);
-});
+    });
+    process.on('SIGINT', () => {
+        logger_1.default.info('SIGINT received. Shutting down gracefully...');
+        server.close(() => {
+            logger_1.default.info('Process terminated');
+            process.exit(0);
+        });
+    });
+    // Handle unhandled promise rejections
+    process.on('unhandledRejection', (err) => {
+        logger_1.default.error(`Unhandled Promise Rejection: ${err.message}`, err);
+        if (process.env.NODE_ENV === 'production') {
+            server.close(() => {
+                process.exit(1);
+            });
+        }
+        else {
+            logger_1.default.warn('Development mode: Server continuing despite unhandled rejection');
+        }
+    });
+    // Handle uncaught exceptions
+    process.on('uncaughtException', (err) => {
+        logger_1.default.error(`Uncaught Exception: ${err.message}`, err);
+        process.exit(1);
+    });
+}
 exports.default = app;

@@ -325,14 +325,12 @@ const enrollCourse = async (req, res) => {
             const { error: paymentInsertError } = await supabase_1.supabaseAdmin
                 .from('payments')
                 .insert({
-                transaction_ref: reference,
                 user_id: userId,
                 course_id: course.id,
-                amount: transactionAmount,
-                currency: transactionCurrency,
-                status: 'completed',
-                payment_method: paymentGateway,
-                customer_email: userEmail || '',
+                amount: Math.round(transactionAmount),
+                status: 'success',
+                reference: reference,
+                gateway: paymentGateway,
                 customer_name: userName || '',
                 raw_data: rawData
             });
@@ -347,7 +345,7 @@ const enrollCourse = async (req, res) => {
             .insert({
             user_id: userId,
             course_id: course.id,
-            enrolled_at: new Date().toISOString()
+            enrollment_date: new Date().toISOString()
         });
         if (enrollInsertError) {
             console.error('Failed to create enrollment record in Supabase:', enrollInsertError);
@@ -371,7 +369,7 @@ const enrollCourse = async (req, res) => {
                 .upsert({
                 user_id: userId,
                 lesson_id: lessons[0].id,
-                is_completed: false,
+                completed: false,
                 updated_at: new Date().toISOString()
             }, { onConflict: 'user_id, lesson_id' });
         }

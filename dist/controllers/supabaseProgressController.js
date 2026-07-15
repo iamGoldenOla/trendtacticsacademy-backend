@@ -1,7 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getCourseCompletionStats = exports.resetProgress = exports.updateLastAccessed = exports.getAllUserProgress = exports.getUserCourseProgress = void 0;
+exports.markLessonComplete = exports.getCourseCompletionStats = exports.resetProgress = exports.updateLastAccessed = exports.getAllUserProgress = exports.getUserCourseProgress = void 0;
 const supabaseModels_1 = require("../utils/supabaseModels");
+const supabase_1 = require("../utils/supabase");
 /**
  * @desc    Get user progress for a specific course
  * @route   GET /api/progress/:courseId
@@ -145,3 +146,80 @@ const getCourseCompletionStats = async (req, res) => {
     }
 };
 exports.getCourseCompletionStats = getCourseCompletionStats;
+/**
+ * @desc    Mark a lesson as complete and update progress percentage
+ * @route   POST /api/courses/:courseId/lessons/:lessonId/complete
+ * @access  Private
+ */
+const markLessonComplete = async (req, res) => {
+    try {
+        const { courseId, lessonId } = req.params;
+        const userId = req.user.id;
+        // 1. Mark lesson as completed in lesson_progress
+        const { error: progressError } = await supabase_1.supabaseAdmin
+            .from('lesson_progress')
+            .upsert({
+            user_id: userId,
+            lesson_id: lessonId,
+            completed: true,
+            updated_at: new Date().toISOString()
+        }, { onConflict: 'user_id, lesson_id' });
+        if (progressError) {
+            console.error('Error inserting lesson progress:', progressError);
+            return res.status(500).json({ message: 'Failed to record lesson progress' });
+        }
+        // 2. Fetch the enrollment record to get current completed_lessons
+        const { data: enrollment, error: enrollError } = await supabase_1.supabaseAdmin
+            .from('enrollments')
+            .select('*')
+            .eq('user_id', userId)
+            .eq('course_id', courseId)
+            .maybeSingle();
+        if (enrollError) {
+            console.error('Error checking enrollment:', enrollError);
+            return res.status(500).json({ message: 'Server error verifying enrollment' });
+        }
+        if (!enrollment) {
+            return res.status(404).json({ message: 'Not enrolled in this course' });
+        }
+        let completedLessons = enrollment.completed_lessons || [];
+        if (!completedLessons.includes(lessonId)) {
+            completedLessons.push(lessonId);
+        }
+        // 3. Fetch all published lessons in this course to calculate progress percentage
+        const { data: lessons, error: lessonsError } = await supabase_1.supabaseAdmin
+            .from('lessons')
+            .select(`
+        id,
+        module:modules!inner(course_id)
+      `)
+            .eq('modules.course_id', courseId);
+        if (lessonsError) {
+            console.error('Error fetching course lessons:', lessonsError);
+        }
+        const totalLessonsCount = lessons && lessons.length > 0 ? lessons.length : 1;
+        const progressPercentage = Math.min(Math.round((completedLessons.length / totalLessonsCount) * 100), 100);
+        // 4. Update enrollment completed_lessons list, progress and last_accessed
+        const { error: updateError } = await supabase_1.supabaseAdmin
+            .from('enrollments')
+            .update({
+            completed_lessons: completedLessons,
+            last_accessed: new Date().toISOString()
+        })
+            .eq('id', enrollment.id);
+        if (updateError) {
+            console.error('Error updating enrollment progress:', updateError);
+            return res.status(500).json({ message: 'Failed to update course progress' });
+        }
+        res.json({
+            success: true,
+            progress: progressPercentage,
+            completedLessons
+        });
+    }
+    catch (error) {
+        console.error('Mark lesson complete error:', error);
+        res.status(500).json({ message: 'Server error marking lesson as complete' });
+    }
+};
+exports.markLessonComplete = markLessonComplete;

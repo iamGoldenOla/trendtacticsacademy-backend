@@ -32,22 +32,24 @@ const level = () => {
 };
 // Define format for logs
 const format = winston_1.default.format.combine(winston_1.default.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss:ms' }), winston_1.default.format.colorize({ all: true }), winston_1.default.format.printf((info) => `${info.timestamp} ${info.level}: ${info.message}`));
-// Define transports
+// Define transports — file transports only when not on Vercel (read-only filesystem)
 const transports = [
-    // Console transport
+    // Console transport (always)
     new winston_1.default.transports.Console(),
+];
+if (!process.env.VERCEL) {
     // File transport for errors
-    new winston_1.default.transports.File({
+    transports.push(new winston_1.default.transports.File({
         filename: path_1.default.join(process.cwd(), 'logs', 'error.log'),
         level: 'error',
         format: winston_1.default.format.combine(winston_1.default.format.timestamp(), winston_1.default.format.json()),
-    }),
+    }));
     // File transport for all logs
-    new winston_1.default.transports.File({
+    transports.push(new winston_1.default.transports.File({
         filename: path_1.default.join(process.cwd(), 'logs', 'combined.log'),
         format: winston_1.default.format.combine(winston_1.default.format.timestamp(), winston_1.default.format.json()),
-    }),
-];
+    }));
+}
 // Create the logger
 const logger = winston_1.default.createLogger({
     level: level(),
@@ -56,11 +58,13 @@ const logger = winston_1.default.createLogger({
     transports,
     exitOnError: false,
 });
-// Create logs directory if it doesn't exist
-const fs = require('fs');
-const logsDir = path_1.default.join(process.cwd(), 'logs');
-if (!fs.existsSync(logsDir)) {
-    fs.mkdirSync(logsDir, { recursive: true });
+// Create logs directory if it doesn't exist (skip on Vercel)
+if (!process.env.VERCEL) {
+    const fs = require('fs');
+    const logsDir = path_1.default.join(process.cwd(), 'logs');
+    if (!fs.existsSync(logsDir)) {
+        fs.mkdirSync(logsDir, { recursive: true });
+    }
 }
 exports.default = logger;
 // Export specific log methods for convenience

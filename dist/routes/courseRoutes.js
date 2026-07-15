@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const supabaseCourseController_1 = require("../controllers/supabaseCourseController");
 const lessonController_1 = require("../controllers/lessonController");
+const supabaseProgressController_1 = require("../controllers/supabaseProgressController");
 const quizController_1 = require("../controllers/quizController");
 const supabaseAuth_1 = require("../middleware/supabaseAuth");
 const router = express_1.default.Router();
@@ -26,7 +27,7 @@ router.get('/:courseId/lessons/:lessonId', supabaseAuth_1.protect, lessonControl
 router.post('/:courseId/lessons', supabaseAuth_1.protect, supabaseAuth_1.instructor, lessonController_1.addLesson);
 router.put('/:courseId/lessons/:lessonId', supabaseAuth_1.protect, supabaseAuth_1.instructor, lessonController_1.updateLesson);
 router.delete('/:courseId/lessons/:lessonId', supabaseAuth_1.protect, supabaseAuth_1.instructor, lessonController_1.deleteLesson);
-router.post('/:courseId/lessons/:lessonId/complete', supabaseAuth_1.protect, lessonController_1.markLessonComplete);
+router.post('/:courseId/lessons/:lessonId/complete', supabaseAuth_1.protect, supabaseProgressController_1.markLessonComplete);
 // Quiz routes
 router.get('/:courseId/lessons/:lessonId/quiz', supabaseAuth_1.protect, quizController_1.getLessonQuiz);
 router.post('/:courseId/lessons/:lessonId/quiz', supabaseAuth_1.protect, supabaseAuth_1.instructor, quizController_1.addQuizToLesson);

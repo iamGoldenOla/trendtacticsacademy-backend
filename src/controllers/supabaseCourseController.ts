@@ -175,7 +175,7 @@ export const enrollCourse = async (req: Request, res: Response) => {
     const userName = (req as any).user.name || '';
 
     // Check if input is a valid UUID
-    const isUUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(courseIdInput);
+    const isUUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(courseIdInput);
 
     let course: any = null;
     if (isUUID) {
