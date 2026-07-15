@@ -393,7 +393,7 @@ export const enrollCourse = async (req: Request, res: Response) => {
       .insert({
         user_id: userId,
         course_id: course.id,
-        enrolled_at: new Date().toISOString()
+        enrollment_date: new Date().toISOString()
       });
 
     if (enrollInsertError) {
@@ -421,9 +421,10 @@ export const enrollCourse = async (req: Request, res: Response) => {
         .upsert({
           user_id: userId,
           lesson_id: lessons[0].id,
-          is_completed: false,
+          completed: false,
           updated_at: new Date().toISOString()
         }, { onConflict: 'user_id, lesson_id' });
+
     }
 
     res.json({ success: true, message: 'Successfully enrolled in course' });

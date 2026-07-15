@@ -13,9 +13,11 @@ import {
   getLessonById,
   addLesson,
   updateLesson,
-  deleteLesson,
-  markLessonComplete
+  deleteLesson
 } from '../controllers/lessonController';
+import {
+  markLessonComplete
+} from '../controllers/supabaseProgressController';
 import {
   getLessonQuiz,
   addQuizToLesson,
