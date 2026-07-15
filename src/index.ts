@@ -52,10 +52,29 @@ const limiter = rateLimit({
 app.use('/api/', limiter);
 
 // CORS configuration
+const allowedOrigins = [
+  'http://localhost:3000',
+  'http://localhost:3001',
+  'http://localhost:8080',
+  'http://localhost:5173',
+  'https://academy.trendtacticsdigital.com',
+  'https://trendtacticsdigital.com'
+];
+
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production' 
-    ? process.env.FRONTEND_URL 
-    : ['http://localhost:3000', 'http://localhost:3001'],
+  origin: (origin, callback) => {
+    if (!origin) return callback(null, true);
+    if (
+      allowedOrigins.includes(origin) ||
+      origin.endsWith('.trendtacticsdigital.com') ||
+      process.env.FRONTEND_URL === origin ||
+      process.env.NODE_ENV !== 'production'
+    ) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true,
 }));
 
