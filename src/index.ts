@@ -179,56 +179,50 @@ app.use((err: any, req: Request, res: Response, next: NextFunction) => {
   });
 });
 
-const PORT = Number(process.env.PORT) || 5001; // Ensure PORT is a number
-const SECONDARY_PORT = PORT === 5000 ? 5001 : 5000;
+// Only start the server when NOT running on Vercel (Vercel handles HTTP via serverless functions)
+if (!process.env.VERCEL) {
+  const PORT = Number(process.env.PORT) || 5001;
 
-const server = app.listen(PORT, () => {
-  logger.info(`🚀 Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
-  logger.info(`📚 API Documentation available at http://localhost:${PORT}/api-docs`);
-  logger.info(`🏥 Health check available at http://localhost:${PORT}/api/health`);
-});
-
-// Listen on the secondary port as well
-const secondaryServer = app.listen(SECONDARY_PORT, () => {
-  logger.info(`🚀 Server also running on secondary port ${SECONDARY_PORT}`);
-  logger.info(`📚 API Documentation available at http://localhost:${SECONDARY_PORT}/api-docs`);
-  logger.info(`🏥 Health check available at http://localhost:${SECONDARY_PORT}/api/health`);
-});
-
-// Graceful shutdown
-process.on('SIGTERM', () => {
-  logger.info('SIGTERM received. Shutting down gracefully...');
-  server.close(() => {
-    logger.info('Process terminated');
-    process.exit(0);
+  const server = app.listen(PORT, () => {
+    logger.info(`🚀 Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
+    logger.info(`📚 API Documentation available at http://localhost:${PORT}/api-docs`);
+    logger.info(`🏥 Health check available at http://localhost:${PORT}/api/health`);
   });
-});
 
-process.on('SIGINT', () => {
-  logger.info('SIGINT received. Shutting down gracefully...');
-  server.close(() => {
-    logger.info('Process terminated');
-    process.exit(0);
-  });
-});
-
-// Handle unhandled promise rejections
-process.on('unhandledRejection', (err: Error) => {
-  logger.error(`Unhandled Promise Rejection: ${err.message}`, err);
-  // Only exit for critical errors
-  if (process.env.NODE_ENV === 'production') {
+  // Graceful shutdown
+  process.on('SIGTERM', () => {
+    logger.info('SIGTERM received. Shutting down gracefully...');
     server.close(() => {
-      process.exit(1);
+      logger.info('Process terminated');
+      process.exit(0);
     });
-  } else {
-    logger.warn('Development mode: Server continuing despite unhandled rejection');
-  }
-});
+  });
 
-// Handle uncaught exceptions
-process.on('uncaughtException', (err: Error) => {
-  logger.error(`Uncaught Exception: ${err.message}`, err);
-  process.exit(1);
-});
+  process.on('SIGINT', () => {
+    logger.info('SIGINT received. Shutting down gracefully...');
+    server.close(() => {
+      logger.info('Process terminated');
+      process.exit(0);
+    });
+  });
+
+  // Handle unhandled promise rejections
+  process.on('unhandledRejection', (err: Error) => {
+    logger.error(`Unhandled Promise Rejection: ${err.message}`, err);
+    if (process.env.NODE_ENV === 'production') {
+      server.close(() => {
+        process.exit(1);
+      });
+    } else {
+      logger.warn('Development mode: Server continuing despite unhandled rejection');
+    }
+  });
+
+  // Handle uncaught exceptions
+  process.on('uncaughtException', (err: Error) => {
+    logger.error(`Uncaught Exception: ${err.message}`, err);
+    process.exit(1);
+  });
+}
 
 export default app;

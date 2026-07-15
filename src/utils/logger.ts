@@ -38,28 +38,35 @@ const format = winston.format.combine(
   )
 );
 
-// Define transports
-const transports = [
-  // Console transport
+// Define transports — file transports only when not on Vercel (read-only filesystem)
+const transports: winston.transport[] = [
+  // Console transport (always)
   new winston.transports.Console(),
-  // File transport for errors
-  new winston.transports.File({
-    filename: path.join(process.cwd(), 'logs', 'error.log'),
-    level: 'error',
-    format: winston.format.combine(
-      winston.format.timestamp(),
-      winston.format.json()
-    ),
-  }),
-  // File transport for all logs
-  new winston.transports.File({
-    filename: path.join(process.cwd(), 'logs', 'combined.log'),
-    format: winston.format.combine(
-      winston.format.timestamp(),
-      winston.format.json()
-    ),
-  }),
 ];
+
+if (!process.env.VERCEL) {
+  // File transport for errors
+  transports.push(
+    new winston.transports.File({
+      filename: path.join(process.cwd(), 'logs', 'error.log'),
+      level: 'error',
+      format: winston.format.combine(
+        winston.format.timestamp(),
+        winston.format.json()
+      ),
+    })
+  );
+  // File transport for all logs
+  transports.push(
+    new winston.transports.File({
+      filename: path.join(process.cwd(), 'logs', 'combined.log'),
+      format: winston.format.combine(
+        winston.format.timestamp(),
+        winston.format.json()
+      ),
+    })
+  );
+}
 
 // Create the logger
 const logger = winston.createLogger({
@@ -70,11 +77,13 @@ const logger = winston.createLogger({
   exitOnError: false,
 });
 
-// Create logs directory if it doesn't exist
-const fs = require('fs');
-const logsDir = path.join(process.cwd(), 'logs');
-if (!fs.existsSync(logsDir)) {
-  fs.mkdirSync(logsDir, { recursive: true });
+// Create logs directory if it doesn't exist (skip on Vercel)
+if (!process.env.VERCEL) {
+  const fs = require('fs');
+  const logsDir = path.join(process.cwd(), 'logs');
+  if (!fs.existsSync(logsDir)) {
+    fs.mkdirSync(logsDir, { recursive: true });
+  }
 }
 
 export default logger;
