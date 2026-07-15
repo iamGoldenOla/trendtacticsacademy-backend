@@ -467,3 +467,98 @@ export const getEnrolledCourses = async (req: Request, res: Response) => {
     res.status(500).json({ message: 'Server error fetching enrolled courses' });
   }
 };
+
+/**
+ * @desc    Generate/Retrieve certificate for completed course
+ * @route   POST /api/courses/:courseId/certificate
+ * @access  Private
+ */
+export const generateCertificate = async (req: Request, res: Response) => {
+  try {
+    const { courseId } = req.params;
+    const userId = (req as any).user.id;
+
+    // 1. Fetch enrollment to check progress
+    const { data: enrollment, error: enrollError } = await supabaseAdmin
+      .from('enrollments')
+      .select('*')
+      .eq('user_id', userId)
+      .eq('course_id', courseId)
+      .maybeSingle();
+
+    if (enrollError) {
+      console.error('Error fetching enrollment:', enrollError);
+      return res.status(500).json({ message: 'Server error checking enrollment' });
+    }
+
+    if (!enrollment) {
+      return res.status(404).json({ message: 'Not enrolled in this course' });
+    }
+
+    // 2. Fetch all lessons in this course to see if all are completed
+    const { data: lessons, error: lessonsError } = await supabaseAdmin
+      .from('lessons')
+      .select('id, module:modules!inner(course_id)')
+      .eq('modules.course_id', courseId);
+
+    if (lessonsError) {
+      console.error('Error fetching course lessons:', lessonsError);
+      return res.status(500).json({ message: 'Server error fetching course lessons' });
+    }
+
+    const completedLessons = enrollment.completed_lessons || [];
+    const totalLessonsCount = lessons ? lessons.length : 0;
+
+    // Guard against empty course
+    if (totalLessonsCount === 0) {
+      return res.status(400).json({ message: 'This course has no lessons' });
+    }
+
+    // Check if progress is 100%
+    const isCompleted = completedLessons.length >= totalLessonsCount;
+    if (!isCompleted) {
+      return res.status(400).json({
+        message: `Course not completed. Completed ${completedLessons.length} of ${totalLessonsCount} lessons.`
+      });
+    }
+
+    // 3. Check if certificate already exists
+    const { data: existingCert, error: certError } = await supabaseAdmin
+      .from('certificates')
+      .select('*')
+      .eq('user_id', userId)
+      .eq('course_id', courseId)
+      .maybeSingle();
+
+    if (certError) {
+      console.error('Error checking certificate:', certError);
+      return res.status(500).json({ message: 'Server error checking certificate' });
+    }
+
+    if (existingCert) {
+      return res.json(existingCert);
+    }
+
+    // 4. Create new certificate
+    const { data: newCert, error: createError } = await supabaseAdmin
+      .from('certificates')
+      .insert({
+        user_id: userId,
+        course_id: courseId,
+        enrollment_id: enrollment.id,
+        issued_at: new Date().toISOString()
+      })
+      .select()
+      .single();
+
+    if (createError) {
+      console.error('Error creating certificate:', createError);
+      return res.status(500).json({ message: 'Server error generating certificate' });
+    }
+
+    res.status(201).json(newCert);
+  } catch (error: any) {
+    console.error('Generate certificate error:', error);
+    res.status(500).json({ message: 'Server error generating certificate' });
+  }
+};

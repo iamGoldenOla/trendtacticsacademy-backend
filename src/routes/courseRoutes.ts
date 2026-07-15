@@ -7,7 +7,8 @@ import {
   deleteCourse,
   enrollCourse,
   getInstructorCourses,
-  getEnrolledCourses
+  getEnrolledCourses,
+  generateCertificate
 } from '../controllers/supabaseCourseController';
 import {
   getLessonById,
@@ -46,6 +47,7 @@ router.get('/instructor/courses', protect, instructor, getInstructorCourses);
 
 // Student routes
 router.get('/student/enrolled', protect, getEnrolledCourses);
+router.post('/:courseId/certificate', protect, generateCertificate);
 
 // Lesson routes
 router.get('/:courseId/lessons/:lessonId', protect, getLessonById);

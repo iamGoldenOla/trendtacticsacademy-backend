@@ -1,7 +1,5 @@
 import { Request, Response } from 'express';
-import mongoose from 'mongoose';
-import Course from '../models/Course';
-import Progress from '../models/Progress';
+import { supabaseAdmin } from '../utils/supabase';
 
 /**
  * @desc    Get quiz for a lesson
@@ -11,65 +9,42 @@ import Progress from '../models/Progress';
 export const getLessonQuiz = async (req: Request, res: Response) => {
   try {
     const { courseId, lessonId } = req.params;
-    
-    const course = await Course.findById(courseId).populate({
-      path: 'lessons',
-      populate: { path: 'quiz' }
-    });
-    
-    if (!course) {
-      return res.status(404).json({ message: 'Course not found' });
-    }
-    
-    // Check if user is enrolled or is the instructor
-    const isEnrolled = req.user && Array.isArray(course.enrolledStudents) && course.enrolledStudents.some(
-      (student) => student.toString() === req.user._id.toString()
-    );
-    const isInstructor = req.user && course.instructor.toString() === req.user._id.toString();
-    
-    if (!isEnrolled && !isInstructor && req.user && req.user.role !== 'admin') {
+    const userId = (req as any).user.id;
+
+    // Verify enrollment
+    const { data: enrollment, error: enrollError } = await supabaseAdmin
+      .from('enrollments')
+      .select('id')
+      .eq('user_id', userId)
+      .eq('course_id', courseId)
+      .maybeSingle();
+
+    if (enrollError) throw enrollError;
+    if (!enrollment && (req as any).user.role !== 'admin') {
       return res.status(403).json({ message: 'Not enrolled in this course' });
     }
-    
-    // Find the lesson
-    // Find the lesson using find method instead of id method
-    const lesson = Array.isArray(course.lessons) ? 
-      course.lessons.find((l: any) => l && l._id && l._id.toString && l._id.toString() === lessonId) : 
-      null;
-    
-    if (!lesson) {
-      return res.status(404).json({ message: 'Lesson not found' });
-    }
-    
-    // Fetch the lesson document directly
-    const Lesson = require('../models/Lesson').default;
-    const lessonDoc = await Lesson.findById(lessonId).populate('quiz');
-    if (!lessonDoc) {
-      return res.status(404).json({ message: 'Lesson not found' });
-    }
-    if (!lessonDoc.quiz || lessonDoc.quiz.length === 0) {
+
+    // Fetch quiz questions
+    const { data: questions, error: questionsError } = await supabaseAdmin
+      .from('quiz_questions')
+      .select('*')
+      .eq('lesson_id', lessonId);
+
+    if (questionsError) throw questionsError;
+    if (!questions || questions.length === 0) {
       return res.status(404).json({ message: 'No quiz found for this lesson' });
     }
-    // Return quiz without correct answers for students
-    if (isEnrolled && !isInstructor && req.user && req.user.role !== 'admin') {
-      const sanitizedQuiz = lessonDoc.quiz.map((q: any) => {
-        if (q && typeof q === 'object' && '_id' in q && 'question' in q && 'options' in q) {
-          return {
-            _id: q._id,
-            question: q.question,
-            options: q.options
-          };
-        }
-        return {
-          _id: q._id || null,
-          question: '',
-          options: []
-        };
-      });
-      return res.json(sanitizedQuiz);
-    }
-    // Return full quiz with answers for instructors and admins
-    res.json(lessonDoc.quiz);
+
+    const mapped = questions.map((q: any) => ({
+      _id: q.id,
+      id: q.id,
+      question: q.question,
+      options: q.options || [],
+      correctIndex: parseInt(q.correct_answer || '0', 10),
+      explanation: q.explanation || ''
+    }));
+
+    res.json(mapped);
   } catch (error: any) {
     console.error('Get lesson quiz error:', error);
     res.status(500).json({ message: 'Server error fetching lesson quiz' });
@@ -83,44 +58,28 @@ export const getLessonQuiz = async (req: Request, res: Response) => {
  */
 export const addQuizToLesson = async (req: Request, res: Response) => {
   try {
-    const { courseId, lessonId } = req.params;
+    const { lessonId } = req.params;
     const quizQuestions = req.body.questions;
-    
+
     if (!quizQuestions || !Array.isArray(quizQuestions) || quizQuestions.length === 0) {
       return res.status(400).json({ message: 'Please provide quiz questions' });
     }
-    
-    const course = await Course.findById(courseId);
-    
-    if (!course) {
-      return res.status(404).json({ message: 'Course not found' });
-    }
-    
-    // Check if user is the course instructor
-    if (req.user && course.instructor.toString() !== req.user._id.toString() && req.user.role !== 'admin') {
-      return res.status(403).json({ message: 'Not authorized to add quiz to this lesson' });
-    }
-    
-    // Find the lesson using find method instead of id method
-    const lesson = Array.isArray(course.lessons) ? 
-      course.lessons.find((l: any) => l && l._id && l._id.toString && l._id.toString() === lessonId) : 
-      null;
-    
-    if (!lesson) {
-      return res.status(404).json({ message: 'Lesson not found' });
-    }
-    
-    // Add quiz to lesson (update Lesson document directly)
-    const Lesson = require('../models/Lesson').default;
-    const updatedLesson = await Lesson.findByIdAndUpdate(
-      lessonId,
-      { $set: { quiz: quizQuestions } },
-      { new: true, runValidators: true }
-    );
-    if (!updatedLesson) {
-      return res.status(404).json({ message: 'Lesson not found' });
-    }
-    res.json(updatedLesson.quiz);
+
+    const toInsert = quizQuestions.map((q: any) => ({
+      lesson_id: lessonId,
+      question: q.question,
+      options: q.options,
+      correct_answer: (q.correctIndex !== undefined ? q.correctIndex : q.correctAnswer).toString(),
+      explanation: q.explanation || ''
+    }));
+
+    const { data, error } = await supabaseAdmin
+      .from('quiz_questions')
+      .insert(toInsert)
+      .select();
+
+    if (error) throw error;
+    res.json(data);
   } catch (error: any) {
     console.error('Add quiz error:', error);
     res.status(500).json({ message: 'Server error adding quiz' });
@@ -134,45 +93,41 @@ export const addQuizToLesson = async (req: Request, res: Response) => {
  */
 export const updateLessonQuiz = async (req: Request, res: Response) => {
   try {
-    const { courseId, lessonId } = req.params;
+    const { lessonId } = req.params;
     const quizQuestions = req.body.questions;
-    
+
     if (!quizQuestions || !Array.isArray(quizQuestions)) {
       return res.status(400).json({ message: 'Please provide quiz questions' });
     }
-    
-    const course = await Course.findById(courseId);
-    
-    if (!course) {
-      return res.status(404).json({ message: 'Course not found' });
+
+    // Delete existing
+    const { error: deleteError } = await supabaseAdmin
+      .from('quiz_questions')
+      .delete()
+      .eq('lesson_id', lessonId);
+
+    if (deleteError) throw deleteError;
+
+    // Insert new
+    if (quizQuestions.length > 0) {
+      const toInsert = quizQuestions.map((q: any) => ({
+        lesson_id: lessonId,
+        question: q.question,
+        options: q.options,
+        correct_answer: (q.correctIndex !== undefined ? q.correctIndex : q.correctAnswer).toString(),
+        explanation: q.explanation || ''
+      }));
+
+      const { data, error } = await supabaseAdmin
+        .from('quiz_questions')
+        .insert(toInsert)
+        .select();
+
+      if (error) throw error;
+      return res.json(data);
     }
-    
-    // Check if user is the course instructor
-    if (req.user && course.instructor.toString() !== req.user._id.toString() && req.user.role !== 'admin') {
-      return res.status(403).json({ message: 'Not authorized to update quiz for this lesson' });
-    }
-    
-    // Find the lesson
-    // Find the lesson using find method instead of id method
-    const lesson = Array.isArray(course.lessons) ? 
-      course.lessons.find((l: any) => l && l._id && l._id.toString && l._id.toString() === lessonId) : 
-      null;
-    
-    if (!lesson) {
-      return res.status(404).json({ message: 'Lesson not found' });
-    }
-    
-    // Update quiz (update Lesson document directly)
-    const Lesson = require('../models/Lesson').default;
-    const updatedLesson = await Lesson.findByIdAndUpdate(
-      lessonId,
-      { $set: { quiz: quizQuestions } },
-      { new: true, runValidators: true }
-    );
-    if (!updatedLesson) {
-      return res.status(404).json({ message: 'Lesson not found' });
-    }
-    res.json(updatedLesson.quiz);
+
+    res.json([]);
   } catch (error: any) {
     console.error('Update quiz error:', error);
     res.status(500).json({ message: 'Server error updating quiz' });
@@ -187,109 +142,122 @@ export const updateLessonQuiz = async (req: Request, res: Response) => {
 export const submitQuizAnswers = async (req: Request, res: Response) => {
   try {
     const { courseId, lessonId } = req.params;
-    const { answers } = req.body;
-    
+    const userId = (req as any).user.id;
+    let answers = req.body.answers;
+
+    // Handle dictionary format of answers { questionId: selectedIndex }
+    if (answers && !Array.isArray(answers) && typeof answers === 'object') {
+      answers = Object.entries(answers).map(([questionId, selectedOption]) => ({
+        questionId,
+        selectedOption: Number(selectedOption)
+      }));
+    }
+
     if (!answers || !Array.isArray(answers)) {
       return res.status(400).json({ message: 'Please provide answers' });
     }
-    
-    const course = await Course.findById(courseId);
-    
-    if (!course) {
-      return res.status(404).json({ message: 'Course not found' });
-    }
-    
-    // Check if user is enrolled
-    const isEnrolled = req.user && course.enrolledStudents && Array.isArray(course.enrolledStudents) && course.enrolledStudents.some(
-      (student: any) => student && student.toString && student.toString() === req.user._id.toString()
-    );
-    
-    if (!isEnrolled && req.user && req.user.role !== 'admin') {
+
+    // 1. Verify enrollment
+    const { data: enrollment, error: enrollError } = await supabaseAdmin
+      .from('enrollments')
+      .select('*')
+      .eq('user_id', userId)
+      .eq('course_id', courseId)
+      .maybeSingle();
+
+    if (enrollError) throw enrollError;
+    if (!enrollment) {
       return res.status(403).json({ message: 'Not enrolled in this course' });
     }
-    
-    // Fetch the lesson document directly
-    const Lesson = require('../models/Lesson').default;
-    const lessonDoc = await Lesson.findById(lessonId).populate('quiz');
-    if (!lessonDoc) {
-      return res.status(404).json({ message: 'Lesson not found' });
-    }
-    if (!lessonDoc.quiz || lessonDoc.quiz.length === 0) {
+
+    // 2. Fetch quiz questions
+    const { data: dbQuestions, error: questionsError } = await supabaseAdmin
+      .from('quiz_questions')
+      .select('*')
+      .eq('lesson_id', lessonId);
+
+    if (questionsError) throw questionsError;
+    if (!dbQuestions || dbQuestions.length === 0) {
       return res.status(404).json({ message: 'No quiz found for this lesson' });
     }
-    // Grade the quiz
-    const results = answers.map(answer => {
-      const question = lessonDoc.quiz.find((q: any) => q && q._id && q._id.toString() === answer.questionId);
+
+    // 3. Grade the quiz
+    const results = answers.map((ans: any) => {
+      const question = dbQuestions.find((q: any) => q.id === ans.questionId);
       if (!question) {
         return {
-          questionId: answer.questionId,
+          questionId: ans.questionId,
           correct: false,
           message: 'Question not found'
         };
       }
-      // Ensure question is a proper IQuizQuestion object with required properties
-      if ('correctAnswer' in question && 'question' in question) {
-        const isCorrect = question.correctAnswer === answer.selectedOption;
-        return {
-          questionId: answer.questionId,
-          question: question.question,
-          correct: isCorrect,
-          selectedOption: answer.selectedOption,
-          correctOption: isCorrect ? undefined : question.correctAnswer,
-          explanation: question.explanation
-        };
-      } else {
-        // Handle case where question might be an ObjectId
-        return {
-          questionId: answer.questionId,
-          correct: false,
-          message: 'Question data not properly loaded'
-        };
-      }
+      
+      const correctOption = parseInt(question.correct_answer || '0', 10);
+      const isCorrect = correctOption === ans.selectedOption;
+      
+      return {
+        questionId: question.id,
+        question: question.question,
+        correct: isCorrect,
+        selectedOption: ans.selectedOption,
+        correctOption: isCorrect ? undefined : correctOption,
+        explanation: question.explanation
+      };
     });
-    // Calculate score
-    const totalQuestions = lessonDoc.quiz.length;
-    const correctAnswers = results.filter(result => result.correct).length;
-    const score = (correctAnswers / totalQuestions) * 100;
-    // If score is passing (e.g., >= 70%), mark lesson as completed
-    if (score >= 70) {
-      // Find or create progress record
-      let progress = await Progress.findOne({
-        user: req.user._id,
-        course: courseId
+
+    const totalQuestions = dbQuestions.length;
+    const correctAnswers = results.filter((r: any) => r.correct).length;
+    const score = totalQuestions > 0 ? Math.round((correctAnswers / totalQuestions) * 100) : 0;
+    const passing = score >= 70;
+
+    // 4. Record the attempt in quiz_attempts
+    const { error: attemptError } = await supabaseAdmin
+      .from('quiz_attempts')
+      .insert({
+        user_id: userId,
+        lesson_id: lessonId,
+        score: score,
+        passed: passing,
+        answers: answers
       });
-      if (!progress) {
-        progress = new Progress({
-          user: req.user._id,
-          course: courseId,
-          completedLessons: [],
-          progressPercentage: 0,
-          lastAccessed: new Date()
-        });
-      }
-      // Add lesson to completed lessons if not already there
-      const lessonIdStr = lessonId.toString();
-      const lessonNotCompleted = !progress.completedLessons.some(
-        (id: any) => id && id.toString && id.toString() === lessonIdStr
-      );
-      if (lessonNotCompleted) {
-        const lessonObjectId = typeof lessonId === 'string' ? 
-          new mongoose.Types.ObjectId(lessonId) : 
-          lessonId;
-        progress.completedLessons.push(lessonObjectId);
-        // Calculate progress percentage
-        progress.progressPercentage = 
-          (progress.completedLessons.length / course.lessons.length) * 100;
-        // Update last accessed
-        progress.lastAccessed = new Date();
-        await progress.save();
+
+    if (attemptError) {
+      console.error('Error saving quiz attempt:', attemptError);
+    }
+
+    // 5. If passed, mark lesson completed
+    if (passing) {
+      const completedLessons = enrollment.completed_lessons || [];
+      if (!completedLessons.includes(lessonId)) {
+        const updatedCompleted = [...completedLessons, lessonId];
+        
+        const { data: lessons } = await supabaseAdmin
+          .from('lessons')
+          .select('id, module:modules!inner(course_id)')
+          .eq('modules.course_id', courseId);
+        
+        const totalLessonsCount = lessons ? lessons.length : 1;
+        const progressPercentage = Math.min(
+          Math.round((updatedCompleted.length / totalLessonsCount) * 100),
+          100
+        );
+
+        await supabaseAdmin
+          .from('enrollments')
+          .update({
+            completed_lessons: updatedCompleted,
+            progress: progressPercentage,
+            last_accessed: new Date().toISOString()
+          })
+          .eq('id', enrollment.id);
       }
     }
+
     res.json({
       score,
       totalQuestions,
       correctAnswers,
-      passing: score >= 70,
+      passing,
       results
     });
   } catch (error: any) {
@@ -300,186 +268,21 @@ export const submitQuizAnswers = async (req: Request, res: Response) => {
 
 /**
  * @desc    Get module quiz
- * @route   GET /api/courses/:courseId/module-quiz
- * @access  Private
  */
 export const getModuleQuiz = async (req: Request, res: Response) => {
-  try {
-    const { courseId } = req.params;
-    
-    const course = await Course.findById(courseId);
-    
-    if (!course) {
-      return res.status(404).json({ message: 'Course not found' });
-    }
-    
-    // Check if user is enrolled or is the instructor
-    const isEnrolled = req.user && course.enrolledStudents && Array.isArray(course.enrolledStudents) && course.enrolledStudents.some(
-      (student: any) => student && student.toString && student.toString() === req.user._id.toString()
-    );
-    const isInstructor = req.user && course.instructor && course.instructor.toString && course.instructor.toString() === req.user._id.toString();
-    
-    if (!isEnrolled && !isInstructor && req.user && req.user.role !== 'admin') {
-      return res.status(403).json({ message: 'Not enrolled in this course' });
-    }
-    
-    if (!course.moduleQuiz || course.moduleQuiz.length === 0) {
-      return res.status(404).json({ message: 'No module quiz found for this course' });
-    }
-    
-    // Return quiz without correct answers for students
-    if (isEnrolled && !isInstructor && req.user && req.user.role !== 'admin' && course.moduleQuiz) {
-      const sanitizedQuiz = course.moduleQuiz.map(q => {
-        // Check if q has the required properties
-        if (q && typeof q === 'object' && '_id' in q && 'question' in q && 'options' in q) {
-          return {
-            _id: q._id,
-            question: q.question,
-            options: q.options
-          };
-        }
-        // Return a default structure if properties are missing
-        return {
-          _id: q._id || null,
-          question: '',
-          options: []
-        };
-      });
-      
-      return res.json(sanitizedQuiz);
-    }
-    
-    // Return full quiz with answers for instructors and admins
-    res.json(course.moduleQuiz);
-  } catch (error: any) {
-    console.error('Get module quiz error:', error);
-    res.status(500).json({ message: 'Server error fetching module quiz' });
-  }
+  res.status(404).json({ message: 'Module quiz not implemented' });
 };
 
 /**
  * @desc    Add or update module quiz
- * @route   PUT /api/courses/:courseId/module-quiz
- * @access  Private/Instructor
  */
 export const updateModuleQuiz = async (req: Request, res: Response) => {
-  try {
-    const { courseId } = req.params;
-    const quizQuestions = req.body.questions;
-    
-    if (!quizQuestions || !Array.isArray(quizQuestions)) {
-      return res.status(400).json({ message: 'Please provide quiz questions' });
-    }
-    
-    const course = await Course.findById(courseId);
-    
-    if (!course) {
-      return res.status(404).json({ message: 'Course not found' });
-    }
-    
-    // Check if user is the course instructor
-    if (req.user && course.instructor && course.instructor.toString && course.instructor.toString() !== req.user._id.toString() && req.user.role !== 'admin') {
-      return res.status(403).json({ message: 'Not authorized to update module quiz for this course' });
-    }
-    
-    // Update module quiz
-    course.moduleQuiz = quizQuestions;
-    
-    await course.save();
-    
-    res.json(course.moduleQuiz);
-  } catch (error: any) {
-    console.error('Update module quiz error:', error);
-    res.status(500).json({ message: 'Server error updating module quiz' });
-  }
+  res.status(404).json({ message: 'Module quiz not implemented' });
 };
 
 /**
  * @desc    Submit module quiz answers
- * @route   POST /api/courses/:courseId/module-quiz/submit
- * @access  Private
  */
 export const submitModuleQuizAnswers = async (req: Request, res: Response) => {
-  try {
-    const { courseId } = req.params;
-    const { answers } = req.body;
-    
-    if (!answers || !Array.isArray(answers)) {
-      return res.status(400).json({ message: 'Please provide answers' });
-    }
-    
-    const course = await Course.findById(courseId);
-    
-    if (!course) {
-      return res.status(404).json({ message: 'Course not found' });
-    }
-    
-    // Check if user is enrolled
-    const isEnrolled = req.user && course.enrolledStudents && Array.isArray(course.enrolledStudents) && course.enrolledStudents.some(
-      (student: any) => student && student.toString && student.toString() === req.user._id.toString()
-    );
-    
-    if (!isEnrolled && req.user && req.user.role !== 'admin') {
-      return res.status(403).json({ message: 'Not enrolled in this course' });
-    }
-    
-    if (!course.moduleQuiz || course.moduleQuiz.length === 0) {
-      return res.status(404).json({ message: 'No module quiz found for this course' });
-    }
-    
-    // Grade the quiz
-    const results = answers.map(answer => {
-      const question = course.moduleQuiz && course.moduleQuiz.find((q: any) => q && q._id && q._id.toString() === answer.questionId);
-      
-      if (!question) {
-        return {
-          questionId: answer.questionId,
-          correct: false,
-          message: 'Question not found'
-        };
-      }
-      
-      // Ensure question is a proper IQuizQuestion object with required properties
-      if ('correctAnswer' in question && 'question' in question) {
-        const isCorrect = question.correctAnswer === answer.selectedOption;
-        
-        return {
-          questionId: answer.questionId,
-          question: question.question,
-          correct: isCorrect,
-          selectedOption: answer.selectedOption,
-          correctOption: isCorrect ? undefined : question.correctAnswer,
-          explanation: question.explanation
-        };
-      } else {
-        // Handle case where question might be an ObjectId
-        return {
-          questionId: answer.questionId,
-          correct: false,
-          message: 'Question data not properly loaded'
-        };
-      }
-    });
-    
-    // Calculate score
-    const totalQuestions = course.moduleQuiz.length;
-    const correctAnswers = results.filter(result => result.correct).length;
-    const score = (correctAnswers / totalQuestions) * 100;
-    
-    // If score is passing (e.g., >= 70%), award a badge if available
-    if (score >= 70) {
-      // Logic for awarding completion badge could be added here
-    }
-    
-    res.json({
-      score,
-      totalQuestions,
-      correctAnswers,
-      passing: score >= 70,
-      results
-    });
-  } catch (error: any) {
-    console.error('Submit module quiz answers error:', error);
-    res.status(500).json({ message: 'Server error submitting module quiz answers' });
-  }
+  res.status(404).json({ message: 'Module quiz not implemented' });
 };
