@@ -374,6 +374,7 @@ export const enrollCourse = async (req: Request, res: Response) => {
           amount: Math.round(transactionAmount),
           status: 'success',
           reference: reference,
+          transaction_ref: reference,
           gateway: paymentGateway,
           customer_name: userName || '',
           raw_data: rawData
