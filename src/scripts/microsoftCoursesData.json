@@ -1,0 +1,1347 @@
+[
+  {
+    "id": "8465492d-9477-4b72-875f-2c3f8f117c49",
+    "title": "AI for Beginners",
+    "subtitle": "A 12-week, 24-lesson curriculum exploring Artificial Intelligence, Neural Networks, Deep Learning, and more.",
+    "instructor": "Microsoft",
+    "instructorAvatar": "",
+    "thumbnail": "course-ai-fundamentals",
+    "price": 10,
+    "originalPrice": 49.99,
+    "rating": 4.9,
+    "reviewCount": 1542,
+    "enrollmentCount": 12500,
+    "level": "Beginner",
+    "category": "Development",
+    "subcategory": "Artificial Intelligence",
+    "language": "English",
+    "duration": "12 weeks",
+    "lectureCount": 39,
+    "lastUpdated": "July 2026",
+    "description": "Explore the world of Artificial Intelligence (AI) with Microsoft's comprehensive 24-lesson curriculum. Learn Symbolic AI, Neural Networks, Computer Vision, Natural Language Processing, and more.",
+    "tags": [
+      "AI",
+      "Neural Networks",
+      "Deep Learning",
+      "NLP",
+      "Computer Vision"
+    ],
+    "sections": [
+      {
+        "id": "427113a1-1c14-4ea5-bef8-4a6f275e0ae7",
+        "title": "Module 1: Intro",
+        "lectures": [
+          {
+            "id": "760039c2-3f9d-4b43-92a8-36ad86bad73b",
+            "title": "Intro",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/lessons/1-Intro/README.md"
+          }
+        ]
+      },
+      {
+        "id": "846a2599-4508-4b87-8807-cc722a4517e4",
+        "title": "Module 2: Symbolic",
+        "lectures": [
+          {
+            "id": "e20e75d6-03f9-4162-af12-064222448255",
+            "title": "Symbolic",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/lessons/2-Symbolic/README.md"
+          }
+        ]
+      },
+      {
+        "id": "79f84e47-2f53-4b86-8dec-223a75709048",
+        "title": "Module 3: Neuralnetworks",
+        "lectures": [
+          {
+            "id": "ca7396d2-7d19-4f2c-a5c2-561adc133e33",
+            "title": "Perceptron",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/lessons/3-NeuralNetworks/03-Perceptron/README.md"
+          },
+          {
+            "id": "e7b3c51b-8578-4c40-9adc-49ea2ceac8f6",
+            "title": "Perceptron (Lab / Practical)",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/lessons/3-NeuralNetworks/03-Perceptron/lab/README.md"
+          },
+          {
+            "id": "86266a67-12c6-4442-9c64-e2305737fd4b",
+            "title": "Ownframework",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/lessons/3-NeuralNetworks/04-OwnFramework/README.md"
+          },
+          {
+            "id": "847c6510-808d-4fb5-8e5d-3fbeb81742fd",
+            "title": "Ownframework (Lab / Practical)",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/lessons/3-NeuralNetworks/04-OwnFramework/lab/README.md"
+          },
+          {
+            "id": "e72099cc-9e67-408e-9c3b-04618325f965",
+            "title": "Frameworks",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/lessons/3-NeuralNetworks/05-Frameworks/README.md"
+          },
+          {
+            "id": "e73a706c-a16b-487f-85c7-83d71408c49a",
+            "title": "Frameworks (Lab / Practical)",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/lessons/3-NeuralNetworks/05-Frameworks/lab/README.md"
+          },
+          {
+            "id": "b9ecc221-2a4c-4173-a8b6-17400cc2f0cf",
+            "title": "Neuralnetworks",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/lessons/3-NeuralNetworks/README.md"
+          }
+        ]
+      },
+      {
+        "id": "4dadf7ab-15bb-4602-8062-955814366126",
+        "title": "Module 4: Computervision",
+        "lectures": [
+          {
+            "id": "d2b8545c-6730-425a-a8e2-09f6cca5a21f",
+            "title": "Introcv",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/lessons/4-ComputerVision/06-IntroCV/README.md"
+          },
+          {
+            "id": "01c2a799-e1d4-48c6-a2c5-d82ec5e413b2",
+            "title": "Introcv (Lab / Practical)",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/lessons/4-ComputerVision/06-IntroCV/lab/README.md"
+          },
+          {
+            "id": "cb51c441-79ad-4002-bc20-be33606fb5ad",
+            "title": "Convnets",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/lessons/4-ComputerVision/07-ConvNets/README.md"
+          },
+          {
+            "id": "772a552c-5729-4860-ab2d-dfa3d50993b2",
+            "title": "Convnets (Lab / Practical)",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/lessons/4-ComputerVision/07-ConvNets/lab/README.md"
+          },
+          {
+            "id": "6c273af4-2338-4220-a20a-319a2b2eecb3",
+            "title": "Transferlearning",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/lessons/4-ComputerVision/08-TransferLearning/README.md"
+          },
+          {
+            "id": "4152071c-2bb8-49b3-8e7f-c3bc64bfd993",
+            "title": "Transferlearning (Lab / Practical)",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/lessons/4-ComputerVision/08-TransferLearning/lab/README.md"
+          },
+          {
+            "id": "f5ff1d3f-2fb3-4e8d-aee6-8111e3add676",
+            "title": "Autoencoders",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/lessons/4-ComputerVision/09-Autoencoders/README.md"
+          },
+          {
+            "id": "1b60fe79-0cf2-4404-ba46-2b8f7d98090f",
+            "title": "Gans",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/lessons/4-ComputerVision/10-GANs/README.md"
+          },
+          {
+            "id": "ebe28212-983b-40e2-9c98-6cdfc9229922",
+            "title": "Objectdetection",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/lessons/4-ComputerVision/11-ObjectDetection/README.md"
+          },
+          {
+            "id": "cca65aa2-73f1-487c-9144-d09010a040cd",
+            "title": "Objectdetection (Lab / Practical)",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/lessons/4-ComputerVision/11-ObjectDetection/lab/README.md"
+          },
+          {
+            "id": "990658e7-c46b-40ab-b807-f2645a3aab85",
+            "title": "Segmentation",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/lessons/4-ComputerVision/12-Segmentation/README.md"
+          },
+          {
+            "id": "099cf170-6fe0-4411-8c00-9735c8953a44",
+            "title": "Segmentation (Lab / Practical)",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/lessons/4-ComputerVision/12-Segmentation/lab/README.md"
+          },
+          {
+            "id": "8df6feb9-27f3-42e5-88eb-5055d648fb77",
+            "title": "Computervision",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/lessons/4-ComputerVision/README.md"
+          }
+        ]
+      },
+      {
+        "id": "cc2e4ea9-38a8-4884-a1ba-6481f57b96c7",
+        "title": "Module 5: Nlp",
+        "lectures": [
+          {
+            "id": "3b252821-f391-4de5-921c-1a330f2e74ca",
+            "title": "Textrep",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/lessons/5-NLP/13-TextRep/README.md"
+          },
+          {
+            "id": "f9165df4-e0a0-4b09-a5ae-01be87f70a57",
+            "title": "Embeddings",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/lessons/5-NLP/14-Embeddings/README.md"
+          },
+          {
+            "id": "0073082d-f72e-4588-9e3e-5645f0d1689b",
+            "title": "Languagemodeling",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/lessons/5-NLP/15-LanguageModeling/README.md"
+          },
+          {
+            "id": "d1033b26-71a1-4865-979e-04229e8ef2fa",
+            "title": "Languagemodeling (Lab / Practical)",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/lessons/5-NLP/15-LanguageModeling/lab/README.md"
+          },
+          {
+            "id": "32295876-fdfe-424f-baca-a891f0ca1c7c",
+            "title": "Rnn",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/lessons/5-NLP/16-RNN/README.md"
+          },
+          {
+            "id": "88aa36b0-9b21-4504-86e2-b2f1d6006c02",
+            "title": "Generativenetworks",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/lessons/5-NLP/17-GenerativeNetworks/README.md"
+          },
+          {
+            "id": "6db231a9-c67f-44c0-9164-0d54690d1dec",
+            "title": "Generativenetworks (Lab / Practical)",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/lessons/5-NLP/17-GenerativeNetworks/lab/README.md"
+          },
+          {
+            "id": "76057e6e-8016-4dcb-9ea0-4766c00a6ed7",
+            "title": "Transformers",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/lessons/5-NLP/18-Transformers/README.md"
+          },
+          {
+            "id": "ce2e7b0a-09a4-4176-a3eb-cde68ac529e0",
+            "title": "Ner",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/lessons/5-NLP/19-NER/README.md"
+          },
+          {
+            "id": "9a4ede73-ff9a-44bc-aea2-593e0c708a29",
+            "title": "Ner (Lab / Practical)",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/lessons/5-NLP/19-NER/lab/README.md"
+          },
+          {
+            "id": "e74d75c1-ae2e-41be-b029-882e1c1501a8",
+            "title": "Langmodels",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/lessons/5-NLP/20-LangModels/README.md"
+          },
+          {
+            "id": "c95777b7-0a48-4728-abda-28fe0cce79d4",
+            "title": "Nlp",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/lessons/5-NLP/README.md"
+          }
+        ]
+      },
+      {
+        "id": "33e1a824-71ac-4b69-9fb6-43c9a9d42d72",
+        "title": "Module 6: Other",
+        "lectures": [
+          {
+            "id": "04e84d8d-9ae2-4ca8-ad3e-6863c79256a8",
+            "title": "Geneticalgorithms",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/lessons/6-Other/21-GeneticAlgorithms/README.md"
+          },
+          {
+            "id": "ca1a1d3a-e0be-4e91-b746-dae06e5b6ae3",
+            "title": "Deeprl",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/lessons/6-Other/22-DeepRL/README.md"
+          },
+          {
+            "id": "20f787d7-f82e-404a-bc38-b1c3a62a3cbd",
+            "title": "Deeprl (Lab / Practical)",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/lessons/6-Other/22-DeepRL/lab/README.md"
+          },
+          {
+            "id": "1b775608-194c-4d2e-b264-ec79e5c53942",
+            "title": "Multiagentsystems",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/lessons/6-Other/23-MultiagentSystems/README.md"
+          }
+        ]
+      },
+      {
+        "id": "c7370593-5d76-4eab-a051-fe9ab7223e84",
+        "title": "Module 7: Ethics",
+        "lectures": [
+          {
+            "id": "7ae36311-5ae1-489e-8532-c04e5b45f7e2",
+            "title": "Ethics",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/lessons/7-Ethics/README.md"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bc2d4420-7988-4389-91ee-325b3069cf72",
+    "title": "Machine Learning for Beginners",
+    "subtitle": "12 weeks, 26 lessons, classic Machine Learning for all.",
+    "instructor": "Microsoft",
+    "instructorAvatar": "",
+    "thumbnail": "course-ml-beginners",
+    "price": 10,
+    "originalPrice": 49.99,
+    "rating": 4.8,
+    "reviewCount": 984,
+    "enrollmentCount": 8400,
+    "level": "Beginner",
+    "category": "Development",
+    "subcategory": "Machine Learning",
+    "language": "English",
+    "duration": "12 weeks",
+    "lectureCount": 27,
+    "lastUpdated": "July 2026",
+    "description": "Learn classic Machine Learning with this 12-week curriculum. Focuses on regression, classification, clustering, time-series, NLP, and reinforcement learning using Scikit-learn and Python.",
+    "tags": [
+      "Machine Learning",
+      "Python",
+      "Scikit-Learn",
+      "Regression",
+      "Clustering"
+    ],
+    "sections": [
+      {
+        "id": "207f8329-c372-4792-9369-7a86abf63898",
+        "title": "Module 1: Introduction",
+        "lectures": [
+          {
+            "id": "b7bce6ec-b7a0-401c-af91-1faf28ab0ad0",
+            "title": "Intro to ML",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/1-Introduction/1-intro-to-ML/README.md"
+          },
+          {
+            "id": "5c892f08-a6fa-4488-af1f-69cdb54c97f8",
+            "title": "History of ML",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/1-Introduction/2-history-of-ML/README.md"
+          },
+          {
+            "id": "2490ca15-db03-4230-8c3d-b7ce437a7f4a",
+            "title": "Fairness",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/1-Introduction/3-fairness/README.md"
+          },
+          {
+            "id": "f0ff4953-a6e7-42a8-b154-69657c04aefa",
+            "title": "Techniques of ML",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/1-Introduction/4-techniques-of-ML/README.md"
+          }
+        ]
+      },
+      {
+        "id": "cde830bd-79a3-493d-a34a-c033fd5e099c",
+        "title": "Module 2: Regression",
+        "lectures": [
+          {
+            "id": "805bac17-2eea-4538-9bd6-ff4a8a421206",
+            "title": "Tools",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/2-Regression/1-Tools/README.md"
+          },
+          {
+            "id": "89b1adf6-94b4-4fdc-8243-cd38ce905441",
+            "title": "Data",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/2-Regression/2-Data/README.md"
+          },
+          {
+            "id": "e587f1f1-10c7-400e-9f8e-5d302ac16451",
+            "title": "Linear",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/2-Regression/3-Linear/README.md"
+          },
+          {
+            "id": "39055126-e45f-47ec-a743-279c916ce052",
+            "title": "Logistic",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/2-Regression/4-Logistic/README.md"
+          }
+        ]
+      },
+      {
+        "id": "b1b7a212-a15d-4aac-99cd-8d63e3efce80",
+        "title": "Module 3: Web App",
+        "lectures": [
+          {
+            "id": "cf254158-727e-4f86-a38e-a9af82a99c2a",
+            "title": "Web App",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/3-Web-App/1-Web-App/README.md"
+          }
+        ]
+      },
+      {
+        "id": "f67527cf-3775-43ba-aadc-8632324bebb1",
+        "title": "Module 4: Classification",
+        "lectures": [
+          {
+            "id": "b91cacf5-d2e1-465f-b07a-5acfaf3392dd",
+            "title": "Introduction",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/4-Classification/1-Introduction/README.md"
+          },
+          {
+            "id": "ecb0d066-3d0f-448d-9f41-6063195a4a7f",
+            "title": "Classifiers 1",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/4-Classification/2-Classifiers-1/README.md"
+          },
+          {
+            "id": "7ee47047-3945-43eb-a698-d66be3d7292f",
+            "title": "Classifiers 2",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/4-Classification/3-Classifiers-2/README.md"
+          },
+          {
+            "id": "898d0632-462e-48a9-b679-ce5ba96faff3",
+            "title": "Applied",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/4-Classification/4-Applied/README.md"
+          }
+        ]
+      },
+      {
+        "id": "9b0dacef-45df-44c2-bea7-cfd86e02843f",
+        "title": "Module 5: Clustering",
+        "lectures": [
+          {
+            "id": "230790f4-6354-453c-8557-2d70d6d027e5",
+            "title": "Visualize",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/5-Clustering/1-Visualize/README.md"
+          },
+          {
+            "id": "f8f6bffb-c9d7-4e20-85ec-3d4cc3ca810c",
+            "title": "K Means",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/5-Clustering/2-K-Means/README.md"
+          }
+        ]
+      },
+      {
+        "id": "bbf07d79-a693-41bc-8651-b3f48f612f39",
+        "title": "Module 6: Nlp",
+        "lectures": [
+          {
+            "id": "763aeb79-a481-4fa5-9bde-43267a03f401",
+            "title": "Introduction to NLP",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/6-NLP/1-Introduction-to-NLP/README.md"
+          },
+          {
+            "id": "24ef7c26-f711-4cdb-8f83-b07392f4553f",
+            "title": "Tasks",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/6-NLP/2-Tasks/README.md"
+          },
+          {
+            "id": "1bec6c8c-b21d-408c-b410-824b93532a35",
+            "title": "Hotel Reviews 1",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/6-NLP/4-Hotel-Reviews-1/README.md"
+          },
+          {
+            "id": "f032694c-7047-4c3b-9865-25e7685fb9d1",
+            "title": "Hotel Reviews 2",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/6-NLP/5-Hotel-Reviews-2/README.md"
+          },
+          {
+            "id": "e8b52270-b9aa-4557-b2e9-ec751aebc533",
+            "title": "Data",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/6-NLP/data/README.md"
+          }
+        ]
+      },
+      {
+        "id": "599e3f12-dc8c-4690-93c6-17f0c0369a6d",
+        "title": "Module 7: Timeseries",
+        "lectures": [
+          {
+            "id": "b173cd90-6c8d-4916-8e40-008a84fb74e1",
+            "title": "Introduction",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/7-TimeSeries/1-Introduction/README.md"
+          },
+          {
+            "id": "eff65302-420f-4795-b25e-2e3fce6215a9",
+            "title": "Arima",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/7-TimeSeries/2-ARIMA/README.md"
+          },
+          {
+            "id": "04d8ec8f-8ab3-4429-bdc7-75e6ce299859",
+            "title": "Svr",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/7-TimeSeries/3-SVR/README.md"
+          }
+        ]
+      },
+      {
+        "id": "47abac35-3121-4afd-a586-2ceadd55dc94",
+        "title": "Module 8: Reinforcement",
+        "lectures": [
+          {
+            "id": "1e57c864-b5d8-4c83-af45-0bfb65f4d4a6",
+            "title": "Qlearning",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/8-Reinforcement/1-QLearning/README.md"
+          },
+          {
+            "id": "5ce555a8-33c6-4b7f-805e-4e21f8ebab3c",
+            "title": "Gym",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/8-Reinforcement/2-Gym/README.md"
+          }
+        ]
+      },
+      {
+        "id": "d31169e7-2250-4fe1-82fa-eb6a20612e2b",
+        "title": "Module 9: Real World",
+        "lectures": [
+          {
+            "id": "38977f15-2a42-4aa1-8a7f-a6ae28553c41",
+            "title": "Applications",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/9-Real-World/1-Applications/README.md"
+          },
+          {
+            "id": "14231907-0e7d-482a-af1d-d4a131ea4536",
+            "title": "Debugging ML Models",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/9-Real-World/2-Debugging-ML-Models/README.md"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "e0970a25-e51c-43df-9e26-bc94c34d115d",
+    "title": "Generative AI for Beginners",
+    "subtitle": "21 lessons teaching everything you need to start building Generative AI applications.",
+    "instructor": "Microsoft",
+    "instructorAvatar": "",
+    "thumbnail": "course-genai",
+    "price": 10,
+    "originalPrice": 59.99,
+    "rating": 4.9,
+    "reviewCount": 1845,
+    "enrollmentCount": 15200,
+    "level": "Beginner",
+    "category": "Development",
+    "subcategory": "Generative AI",
+    "language": "English",
+    "duration": "Self-paced",
+    "lectureCount": 22,
+    "lastUpdated": "July 2026",
+    "description": "Get started with Generative AI! Learn the fundamentals of LLMs, prompt engineering, text and chat apps, UX design for AI, SLMs, RAG, and multi-agent systems.",
+    "tags": [
+      "Generative AI",
+      "LLM",
+      "Prompt Engineering",
+      "RAG",
+      "Agents"
+    ],
+    "sections": [
+      {
+        "id": "a99558a5-a90b-404f-9b12-63a72d1cce61",
+        "title": "Module 1: Foundations of Generative AI",
+        "lectures": [
+          {
+            "id": "b2158c41-81d3-415d-829e-0172b290a44a",
+            "title": "Course Setup",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/00-course-setup/README.md"
+          },
+          {
+            "id": "ad38d5c5-5c29-44fe-b814-8dfbd6be0222",
+            "title": "Introduction to Genai",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/01-introduction-to-genai/README.md"
+          },
+          {
+            "id": "4b3d2fc3-3e3a-415d-bff5-304bad06e607",
+            "title": "Exploring and Comparing Different Llms",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/02-exploring-and-comparing-different-llms/README.md"
+          },
+          {
+            "id": "1dd1faef-4037-4c47-8f5a-a7350ce38c01",
+            "title": "Using Generative AI Responsibly",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/03-using-generative-ai-responsibly/README.md"
+          }
+        ]
+      },
+      {
+        "id": "2bd2f268-4935-4b77-bfe3-701b6598308e",
+        "title": "Module 2: Prompt Engineering Principles",
+        "lectures": [
+          {
+            "id": "daa232c4-b393-4294-b2d3-76cc1b2f2d30",
+            "title": "Prompt Engineering Fundamentals",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/04-prompt-engineering-fundamentals/README.md"
+          },
+          {
+            "id": "d946bdf3-a002-497a-b520-df1353796a8b",
+            "title": "Advanced Prompts",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/05-advanced-prompts/README.md"
+          },
+          {
+            "id": "de0104aa-bea4-4996-baec-1a19485e15d7",
+            "title": "Text Generation Apps",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/06-text-generation-apps/README.md"
+          },
+          {
+            "id": "e29a35c0-0708-488f-ba8e-3b251544f179",
+            "title": "Building Chat Applications",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/07-building-chat-applications/README.md"
+          }
+        ]
+      },
+      {
+        "id": "af6650c4-4f70-4bbc-97de-ecdf40e6d472",
+        "title": "Module 3: Building Intelligent Applications",
+        "lectures": [
+          {
+            "id": "ba41c406-adf1-4207-a801-6e057c048b7e",
+            "title": "Building Search Applications",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/08-building-search-applications/README.md"
+          },
+          {
+            "id": "84fdbe1e-0412-47d9-bc92-743b36c86921",
+            "title": "Building Image Applications",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/09-building-image-applications/README.md"
+          },
+          {
+            "id": "ae1d20e1-7dea-46cb-9930-98bd63d44e10",
+            "title": "Building Low Code AI Applications",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/10-building-low-code-ai-applications/README.md"
+          },
+          {
+            "id": "527dc748-2e36-4ceb-9360-1f1f5e70eb9c",
+            "title": "Integrating with Function Calling",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/11-integrating-with-function-calling/README.md"
+          }
+        ]
+      },
+      {
+        "id": "4b9f101c-a26d-41e0-842d-94bb786d1826",
+        "title": "Module 4: UX Design & Security",
+        "lectures": [
+          {
+            "id": "f3158584-75d3-40a4-b4fc-4ce9605947a5",
+            "title": "Designing UX for AI Applications",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/12-designing-ux-for-ai-applications/README.md"
+          },
+          {
+            "id": "eda331e3-b424-4854-bb47-eab6160c3814",
+            "title": "Securing AI Applications",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/13-securing-ai-applications/README.md"
+          },
+          {
+            "id": "7a723161-d4d6-4ed8-9efc-d2a83cc0746f",
+            "title": "The Generative AI Application Lifecycle",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/14-the-generative-ai-application-lifecycle/README.md"
+          },
+          {
+            "id": "3f09d8f7-563c-49f0-af93-120eb652c20c",
+            "title": "Rag and Vector Databases",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/15-rag-and-vector-databases/README.md"
+          }
+        ]
+      },
+      {
+        "id": "d8179721-8896-40c7-b911-09c8930f2aaa",
+        "title": "Module 5: Lifecycle, SLMs & Agents",
+        "lectures": [
+          {
+            "id": "2e611993-f0fa-446c-8b70-e596674943ab",
+            "title": "Open Source Models",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/16-open-source-models/README.md"
+          },
+          {
+            "id": "30aa0c90-7060-4120-8f52-6093fe7e2799",
+            "title": "Ai Agents",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/17-ai-agents/README.md"
+          },
+          {
+            "id": "8ee3ce06-d96e-4f1c-87af-14ec46958c17",
+            "title": "Fine Tuning",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/18-fine-tuning/README.md"
+          },
+          {
+            "id": "dce7dd79-1f7f-4bcb-b295-e42e09cd0946",
+            "title": "Slm",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/19-slm/README.md"
+          }
+        ]
+      },
+      {
+        "id": "329ef804-e91a-4b50-91ec-8f4969a1c6e9",
+        "title": "Module 6: Fine-Tuning & Advanced Models",
+        "lectures": [
+          {
+            "id": "3b450efc-e846-4431-9091-851eb9629f11",
+            "title": "Mistral",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/20-mistral/README.md"
+          },
+          {
+            "id": "49eac871-e757-4ce3-ba1e-5064c1f69f93",
+            "title": "Meta",
+            "duration": "15:00",
+            "type": "text",
+            "body": "docsify-path:/21-meta/README.md"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "5d7a0491-b3b3-4613-888e-73130d22abf2",
+    "title": "Data Science for Beginners",
+    "subtitle": "10-week, 20-lesson curriculum on defining data science, data visualization, and cloud services.",
+    "instructor": "Microsoft",
+    "instructorAvatar": "",
+    "thumbnail": "course-data-science",
+    "price": 10,
+    "originalPrice": 49.99,
+    "rating": 4.7,
+    "reviewCount": 612,
+    "enrollmentCount": 5900,
+    "level": "Beginner",
+    "category": "Development",
+    "subcategory": "Data Science",
+    "language": "English",
+    "duration": "10 weeks",
+    "lectureCount": 20,
+    "lastUpdated": "July 2026",
+    "description": "Become a data scientist! Learn statistics, relational and non-relational databases, data preparation, visualization, data science lifecycle, and low-code cloud integrations.",
+    "tags": [
+      "Data Science",
+      "Python",
+      "Data Visualization",
+      "SQL",
+      "Pandas"
+    ],
+    "sections": [
+      {
+        "id": "ca48ce9f-145f-48bb-9808-73f17fa4cb0a",
+        "title": "Module 1: Introduction",
+        "lectures": [
+          {
+            "id": "00429e68-0320-4905-aba3-3702fb2df76c",
+            "title": "Defining Data Science",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/1-Introduction/01-defining-data-science/README.md"
+          },
+          {
+            "id": "c3b5f247-e903-4bd5-a90f-389bbb5e7303",
+            "title": "Ethics",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/1-Introduction/02-ethics/README.md"
+          },
+          {
+            "id": "34b60ee8-2f37-4763-8a68-c7ef83b8a440",
+            "title": "Defining Data",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/1-Introduction/03-defining-data/README.md"
+          },
+          {
+            "id": "1237c804-7bc6-4e94-8c72-164faa7970ee",
+            "title": "Stats and Probability",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/1-Introduction/04-stats-and-probability/README.md"
+          }
+        ]
+      },
+      {
+        "id": "7ff464b9-6f3d-4a0b-a95c-475ddffde398",
+        "title": "Module 2: Working with Data",
+        "lectures": [
+          {
+            "id": "5e0fdbfa-031d-44ba-8489-9abebab33bae",
+            "title": "Relational Databases",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/2-Working-With-Data/05-relational-databases/README.md"
+          },
+          {
+            "id": "220cec1a-f68a-4068-851a-5e405bffcbb6",
+            "title": "Non Relational",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/2-Working-With-Data/06-non-relational/README.md"
+          },
+          {
+            "id": "f624fd35-f991-4d5a-a7cb-c74c0d040988",
+            "title": "Python",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/2-Working-With-Data/07-python/README.md"
+          },
+          {
+            "id": "f4ede01a-eb64-4011-b2b6-46338703dc92",
+            "title": "Data Preparation",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/2-Working-With-Data/08-data-preparation/README.md"
+          }
+        ]
+      },
+      {
+        "id": "74f4128a-a148-4960-962a-edbd40fad089",
+        "title": "Module 3: Data Visualization",
+        "lectures": [
+          {
+            "id": "e5cbf0bc-d23c-4c47-9dfe-38be25ffae93",
+            "title": "Visualization Quantities",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/3-Data-Visualization/09-visualization-quantities/README.md"
+          },
+          {
+            "id": "b80b900f-2bfe-4b26-92d2-653dc0c8a0c7",
+            "title": "Visualization Distributions",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/3-Data-Visualization/10-visualization-distributions/README.md"
+          },
+          {
+            "id": "0ea214aa-a120-4a90-9105-da1828e032e1",
+            "title": "Visualization Proportions",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/3-Data-Visualization/11-visualization-proportions/README.md"
+          },
+          {
+            "id": "ef5a30f6-4e1c-4495-b8d6-20c25cfa9425",
+            "title": "Visualization Relationships",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/3-Data-Visualization/12-visualization-relationships/README.md"
+          },
+          {
+            "id": "05f6de5b-2cc8-433d-893a-1c0cd294999b",
+            "title": "Meaningful Visualizations",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/3-Data-Visualization/13-meaningful-visualizations/README.md"
+          }
+        ]
+      },
+      {
+        "id": "a2801ca7-9fab-4129-a79b-6af746a7df99",
+        "title": "Module 4: Data Science Lifecycle",
+        "lectures": [
+          {
+            "id": "db12aa72-2d6c-40f6-b35b-e6893e1074d8",
+            "title": "Introduction",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/4-Data-Science-Lifecycle/14-Introduction/README.md"
+          },
+          {
+            "id": "51f0cc9f-eedc-4762-ac26-a4bd58db3371",
+            "title": "Analyzing",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/4-Data-Science-Lifecycle/15-analyzing/README.md"
+          },
+          {
+            "id": "cc494be8-5b2e-4d78-b440-c4b2b94006ba",
+            "title": "Communication",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/4-Data-Science-Lifecycle/16-communication/README.md"
+          }
+        ]
+      },
+      {
+        "id": "f609d7a6-672d-4bb7-8158-bed16f0fa3fd",
+        "title": "Module 5: Data Science in Cloud",
+        "lectures": [
+          {
+            "id": "da1ccc86-1e71-4777-83b3-4f81f7e57f74",
+            "title": "Introduction",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/5-Data-Science-In-Cloud/17-Introduction/README.md"
+          },
+          {
+            "id": "321d1159-5f5a-467b-ac7c-29e3886bd556",
+            "title": "Low Code",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/5-Data-Science-In-Cloud/18-Low-Code/README.md"
+          },
+          {
+            "id": "1fb36e22-e5c6-44b3-9119-ef901dbc08ac",
+            "title": "Azure",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/5-Data-Science-In-Cloud/19-Azure/README.md"
+          }
+        ]
+      },
+      {
+        "id": "06890d10-de14-479a-8e1b-32a41cc9181d",
+        "title": "Module 6: Data Science in Wild",
+        "lectures": [
+          {
+            "id": "1dbe74a4-c3e8-44fb-b806-bf0b07bd8a13",
+            "title": "Real World Examples",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/6-Data-Science-In-Wild/20-Real-World-Examples/README.md"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "133f925b-381a-464a-a22c-7389c90f5c9e",
+    "title": "Web Development for Beginners",
+    "subtitle": "12 weeks, 24 lessons, covering HTML, CSS, JavaScript basics, and building projects.",
+    "instructor": "Microsoft",
+    "instructorAvatar": "",
+    "thumbnail": "course-web-dev",
+    "price": 10,
+    "originalPrice": 49.99,
+    "rating": 4.8,
+    "reviewCount": 1152,
+    "enrollmentCount": 9400,
+    "level": "Beginner",
+    "category": "Development",
+    "subcategory": "Web Development",
+    "language": "English",
+    "duration": "12 weeks",
+    "lectureCount": 31,
+    "lastUpdated": "July 2026",
+    "description": "Learn core web development! Explore accessibility, Git basics, Javascript variables and control flow, HTML/CSS structure, space games, browser extensions, and active app design.",
+    "tags": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Web Development",
+      "Git"
+    ],
+    "sections": [
+      {
+        "id": "ce73b4a3-1f85-4002-bf6c-f1ca3cbe62a2",
+        "title": "Module 1: Ai Framework Project",
+        "lectures": [
+          {
+            "id": "7bc8f20d-0340-43a2-905d-67a8a209195a",
+            "title": "Ai Framework Project",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/10-ai-framework-project/README.md"
+          }
+        ]
+      },
+      {
+        "id": "71730c88-76ed-4f0c-8d95-c23c64a73d41",
+        "title": "Module 2: Js Basics",
+        "lectures": [
+          {
+            "id": "33a7991d-ca33-42dd-b5da-c8ad2a22f7ff",
+            "title": "Data Types",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/2-js-basics/1-data-types/README.md"
+          },
+          {
+            "id": "4ebb8876-1fe1-4450-958d-0c83725ab76c",
+            "title": "Functions Methods",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/2-js-basics/2-functions-methods/README.md"
+          },
+          {
+            "id": "23fb4c75-5d16-4611-ab5d-13f7a5771c4f",
+            "title": "Making Decisions",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/2-js-basics/3-making-decisions/README.md"
+          },
+          {
+            "id": "e0bd162f-b4a4-4a21-a52d-3dfd82049c6d",
+            "title": "Arrays Loops",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/2-js-basics/4-arrays-loops/README.md"
+          },
+          {
+            "id": "65185cfe-4d12-4cb4-82ea-fd9adc617498",
+            "title": "Js Basics",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/2-js-basics/README.md"
+          }
+        ]
+      },
+      {
+        "id": "6b251154-4305-4ace-aea2-c8782b939ab5",
+        "title": "Module 3: Terrarium",
+        "lectures": [
+          {
+            "id": "89124164-0eee-49bc-af55-591e1e8d7ec4",
+            "title": "Intro to Html",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/3-terrarium/1-intro-to-html/README.md"
+          },
+          {
+            "id": "c33839ea-ad14-42f0-8892-0fa3dc1e7855",
+            "title": "Intro to Css",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/3-terrarium/2-intro-to-css/README.md"
+          },
+          {
+            "id": "b0abb905-85e2-4b82-ae66-fca13d506408",
+            "title": "Intro to Dom and Closures",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/3-terrarium/3-intro-to-DOM-and-closures/README.md"
+          },
+          {
+            "id": "200a0627-279d-4e45-b9f7-d9ca6c4e5dd3",
+            "title": "Terrarium",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/3-terrarium/README.md"
+          }
+        ]
+      },
+      {
+        "id": "0ae49e2b-64c5-4839-bbf7-097af5f0cfaf",
+        "title": "Module 4: Typing Game",
+        "lectures": [
+          {
+            "id": "949bf3fe-1229-4e1b-a19d-23a1543a1770",
+            "title": "Typing Game",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/4-typing-game/README.md"
+          },
+          {
+            "id": "89684d77-3a5d-489c-ba12-acf1df053a7a",
+            "title": "Typing Game",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/4-typing-game/typing-game/README.md"
+          }
+        ]
+      },
+      {
+        "id": "82924e73-962d-4dd3-8e9b-725533c0eebb",
+        "title": "Module 5: Browser Extension",
+        "lectures": [
+          {
+            "id": "4dbaa686-a425-4cfb-bbf9-60fc273c3384",
+            "title": "About Browsers",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/5-browser-extension/1-about-browsers/README.md"
+          },
+          {
+            "id": "2a1edf4c-d3a4-4b44-a481-0b06ecdc6a4a",
+            "title": "Forms Browsers Local Storage",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/5-browser-extension/2-forms-browsers-local-storage/README.md"
+          },
+          {
+            "id": "4b1eb41e-c8bf-4a6f-9292-1fdee48ca94b",
+            "title": "Background Tasks and Performance",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/5-browser-extension/3-background-tasks-and-performance/README.md"
+          },
+          {
+            "id": "1a527d9e-e4f5-4860-8ee8-f200e6ef6ea7",
+            "title": "Browser Extension",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/5-browser-extension/README.md"
+          }
+        ]
+      },
+      {
+        "id": "f10d6b59-0044-448c-b4a6-10f3bf90ae61",
+        "title": "Module 6: Space Game",
+        "lectures": [
+          {
+            "id": "dba6d016-2aae-4213-9b2e-5d9d694b9187",
+            "title": "Introduction",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/6-space-game/1-introduction/README.md"
+          },
+          {
+            "id": "4848e9f1-acf2-4b8f-80b4-a227ade6040b",
+            "title": "Drawing to Canvas",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/6-space-game/2-drawing-to-canvas/README.md"
+          },
+          {
+            "id": "f03b6ee4-566f-400f-8eb9-7b9ac033b65b",
+            "title": "Moving Elements Around",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/6-space-game/3-moving-elements-around/README.md"
+          },
+          {
+            "id": "f8ecc769-ce20-48f7-93b0-241a9ea1600c",
+            "title": "Collision Detection",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/6-space-game/4-collision-detection/README.md"
+          },
+          {
+            "id": "0db0e2d2-0577-482f-a242-5297d8b5819f",
+            "title": "Keeping Score",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/6-space-game/5-keeping-score/README.md"
+          },
+          {
+            "id": "78c10366-8e1f-4b27-a853-18708ded8eb5",
+            "title": "End Condition",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/6-space-game/6-end-condition/README.md"
+          },
+          {
+            "id": "4f336726-cb45-423b-97df-f3dc1c843da9",
+            "title": "Space Game",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/6-space-game/README.md"
+          }
+        ]
+      },
+      {
+        "id": "01335b66-1f70-4afe-9e4d-8ddc27c7a804",
+        "title": "Module 7: Bank Project",
+        "lectures": [
+          {
+            "id": "91afdb57-b0b5-48f7-9019-2c916996eb25",
+            "title": "Template Route",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/7-bank-project/1-template-route/README.md"
+          },
+          {
+            "id": "6ac9902d-b337-44a4-9d28-2f1bdbea240c",
+            "title": "Forms",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/7-bank-project/2-forms/README.md"
+          },
+          {
+            "id": "2938a915-05f3-4f31-94fc-3dc9a68a8d5f",
+            "title": "Data",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/7-bank-project/3-data/README.md"
+          },
+          {
+            "id": "54ce23d8-41bd-44fe-b622-b4f3081d3775",
+            "title": "State Management",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/7-bank-project/4-state-management/README.md"
+          },
+          {
+            "id": "f2675e5b-9dff-4c87-80a7-3c15f37941dc",
+            "title": "Bank Project",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/7-bank-project/README.md"
+          },
+          {
+            "id": "53d88bd2-9395-4075-9fb7-b6d98ae3739a",
+            "title": "Api",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/7-bank-project/api/README.md"
+          }
+        ]
+      },
+      {
+        "id": "aeee6a0d-7937-4690-bd8e-90c4f7fa0d4d",
+        "title": "Module 8: Code Editor",
+        "lectures": [
+          {
+            "id": "97d65b47-d533-4718-9979-9dd2a43259d6",
+            "title": "Using a Code Editor",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/8-code-editor/1-using-a-code-editor/README.md"
+          }
+        ]
+      },
+      {
+        "id": "82e708dd-b655-4311-af52-303f6158cd83",
+        "title": "Module 9: Chat Project",
+        "lectures": [
+          {
+            "id": "df91ec2c-ca69-4280-89f7-91951fc23179",
+            "title": "Chat Project",
+            "duration": "20:00",
+            "type": "text",
+            "body": "docsify-path:/9-chat-project/README.md"
+          }
+        ]
+      }
+    ]
+  }
+]
